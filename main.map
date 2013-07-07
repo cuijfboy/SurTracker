@@ -1,0 +1,1080 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              sd/fat16.o (__mulsi3)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                              lcd/screen.o (__udivmodqi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                              sd/fat16.o (__udivmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+                              sd/fat16.o (__divmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                              sd/fat16.o (__udivmodsi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                              lcd/menu.o (__do_copy_data)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                              sd/sd_raw.o (memcpy)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                              sd/fat16.o (memset)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+                              sd/fat16.o (strcmp)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+                              sd/fat16.o (strncpy)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+                              sd/fat16.o (strrchr)
+
+Allocating common symbols
+Common symbol       size              file
+
+mi_entry            0x2               lcd/menu.o
+gpx_avlb            0x1               main.o
+speeder_avlb        0x1               main.o
+state               0x1               led/led.o
+sd_avlb             0x1               main.o
+gps_avlb            0x1               main.o
+retry               0x1               sd/sdreader.o
+logfile_entry       0x2b              sd/sdreader.o
+gps_msg_ready       0x1               gps/gps.o
+sys_state           0x1               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+LOAD main.o
+LOAD uart/uart.o
+LOAD key/key.o
+LOAD led/led.o
+LOAD lcd/lcd1602.o
+LOAD lcd/screen.o
+LOAD lcd/menu.o
+LOAD timer/timer.o
+LOAD sd/sd_raw.o
+LOAD sd/partition.o
+LOAD sd/fat16.o
+LOAD sd/sdreader.o
+LOAD gps/gps.o
+LOAD gps/gpsraw.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libm.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x3978
+ *(.vectors)
+ .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000054       0x13 main.o
+ .progmem.data  0x00000067       0x62 lcd/screen.o
+ .progmem.data  0x000000c9       0x48 gps/gps.o
+                0x00000112                . = ALIGN (0x2)
+ *fill*         0x00000111        0x1 00
+                0x00000112                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000112        0x0 linker stubs
+ *(.trampolines*)
+                0x00000112                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000112                __ctors_start = .
+ *(.ctors)
+                0x00000112                __ctors_end = .
+                0x00000112                __dtors_start = .
+ *(.dtors)
+                0x00000112                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000112        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000112                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000112        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000011e       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x0000011e                __do_copy_data
+ .init4         0x00000134       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000134                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000144        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init9)
+ *(.text)
+ .text          0x0000014c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+                0x0000014c                __vector_1
+                0x0000014c                __vector_12
+                0x0000014c                __bad_interrupt
+                0x0000014c                __vector_6
+                0x0000014c                __vector_3
+                0x0000014c                __vector_17
+                0x0000014c                __vector_19
+                0x0000014c                __vector_7
+                0x0000014c                __vector_5
+                0x0000014c                __vector_4
+                0x0000014c                __vector_2
+                0x0000014c                __vector_15
+                0x0000014c                __vector_8
+                0x0000014c                __vector_14
+                0x0000014c                __vector_10
+                0x0000014c                __vector_16
+                0x0000014c                __vector_18
+                0x0000014c                __vector_20
+ .text          0x00000150      0x2f0 main.o
+                0x00000150                main
+ .text          0x00000440       0x5e uart/uart.o
+                0x00000468                uart_puts
+                0x00000482                uart_puts_p
+                0x00000440                uart_init
+                0x00000450                uart_putc
+ .text          0x0000049e       0x7e key/key.o
+                0x0000049e                key_init
+                0x000004b8                key_scan
+ .text          0x0000051c       0xc0 led/led.o
+                0x0000053a                LED_on
+                0x00000576                LED_off
+                0x000005b4                LED_switch
+                0x0000051c                LED_init
+ .text          0x000005dc      0x198 lcd/lcd1602.o
+                0x000006ea                XY_Str_P
+                0x00000680                Disp_Str
+                0x000006ce                Disp_Str_P
+                0x000006c6                Disp_Num
+                0x00000668                Disp_Char
+                0x00000726                LCD_Init
+                0x0000071e                Disp_Clear
+                0x00000658                Locate_xy
+                0x0000066e                XY_Char
+                0x00000630                Write_Data
+                0x00000698                XY_Str
+                0x000005dc                LCD_ReadBusy
+                0x0000070a                XY_Num
+                0x00000644                Write_Comand
+ .text          0x00000774      0x3d8 lcd/screen.o
+                0x00000774                switch_scn_flag
+                0x0000079c                set_screen
+ .text          0x00000b4c      0x326 lcd/menu.o
+                0x00000b4c                menu_init
+                0x00000db6                menu_start
+ .text          0x00000e72      0x168 timer/timer.o
+                0x00000e96                timer0_stop
+                0x00000ea0                timer1_init
+                0x00000f5c                __vector_11
+                0x00000ed2                timer1_reset
+                0x00000e9a                timer0_reset
+                0x00000e72                timer0_init
+                0x00000edc                __vector_9
+                0x00000e90                timer0_start
+                0x00000ecc                timer1_stop
+                0x00000ec4                timer1_start
+ .text          0x00000fda      0x836 sd/sd_raw.o
+                0x00000fda                sd_raw_available
+                0x0000175a                sd_raw_write_interval
+                0x0000143e                sd_raw_read
+                0x00001680                sd_raw_init
+                0x000015a0                sd_raw_read_interval
+                0x00001070                sd_raw_get_info
+                0x0000140a                sd_raw_sync
+                0x00000fe6                sd_raw_locked
+                0x00001268                sd_raw_write
+ .text          0x00001810      0x1c8 sd/partition.o
+                0x00001810                partition_close
+                0x00001820                partition_open
+ .text          0x000019d8     0x1834 sd/fat16.o
+                0x000019d8                fat16_close
+                0x00001f36                fat16_reset_dir
+                0x0000214c                fat16_get_fs_free
+                0x0000210a                fat16_get_file_modification_date
+                0x000022cc                fat16_read_dir
+                0x0000210c                fat16_get_file_modification_time
+                0x0000210e                fat16_get_fs_size
+                0x00001c9e                fat16_close_file
+                0x000031a0                fat16_open_file
+                0x00001caa                fat16_read_file
+                0x000024c6                fat16_open
+                0x00002b5a                fat16_create_file
+                0x000024b2                fat16_get_root_dir_entry
+                0x00002e36                fat16_write_file
+                0x0000313c                fat16_open_dir
+ .text          0x0000320c      0x178 sd/sdreader.o
+                0x000032c4                sdreader_init
+                0x00003252                new_file
+                0x00003242                finish_file
+                0x0000320c                write_buff
+ .text          0x00003384      0x200 gps/gps.o
+                0x00003546                gps_set_arg
+                0x000033a0                __vector_13
+                0x00003384                gps_init
+ .text          0x00003584      0x2a2 gps/gpsraw.o
+                0x00003764                finish_logfile
+                0x000037c0                new_logfile
+                0x000036d0                write_gps_head
+                0x00003584                write_gps_msg
+                0x00003746                save_position
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+ .text          0x00003826        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+                0x00003826                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00003826       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00003826                __mulsi3
+ .text.libgcc   0x00003864       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x00003864                __udivmodqi4
+ .text.libgcc   0x0000387c       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000387c                __udivmodhi4
+ .text.libgcc   0x000038a4       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+                0x000038a4                __divmodhi4
+                0x000038a4                _div
+ .text.libgcc   0x000038ca       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x000038ca                __udivmodsi4
+ .text.libgcc   0x0000390e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000390e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000390e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x0000390e       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                0x0000390e                memcpy
+ .text.avr-libc
+                0x00003920        0xe c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00003920                memset
+ .text.avr-libc
+                0x0000392e       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+                0x0000392e                strcmp
+ .text.avr-libc
+                0x00003940       0x1e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+                0x00003940                strncpy
+ .text.avr-libc
+                0x0000395e       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+                0x0000395e                strrchr
+                0x00003974                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00003974        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00003974                exit
+                0x00003974                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00003974        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00003978                _etext = .
+
+.data           0x00800060      0x12a load address 0x00003978
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 main.o
+ .data          0x00800060        0x0 uart/uart.o
+ .data          0x00800060        0x0 key/key.o
+ .data          0x00800060        0x0 led/led.o
+ .data          0x00800060        0x0 lcd/lcd1602.o
+ .data          0x00800060        0x0 lcd/screen.o
+ .data          0x00800060       0x69 lcd/menu.o
+                0x0080006d                mi_ready
+                0x00800060                m_arrow
+                0x008000a6                mi_save_pos
+                0x008000c2                mi_cancel
+                0x0080008a                mi_settings
+                0x0080007a                mi_start
+                0x00800096                mi_menu
+                0x008000b4                mi_finish
+ .data          0x008000c9        0x0 timer/timer.o
+ .data          0x008000c9        0x0 sd/sd_raw.o
+ .data          0x008000c9        0x0 sd/partition.o
+ .data          0x008000c9        0xd sd/fat16.o
+ .data          0x008000d6       0x72 sd/sdreader.o
+                0x008000d6                filename
+                0x008000e3                sd_buff
+ .data          0x00800148       0x41 gps/gps.o
+                0x00800172                gps_EW
+                0x00800173                gps_alt
+                0x0080015b                gps_state
+                0x00800166                gps_NS
+                0x0080015c                gps_lat
+                0x00800167                gps_lon
+                0x00800148                gps_time
+                0x00800179                gps_NoS
+                0x0080017c                gps_spd
+                0x00800182                gps_dir
+                0x00800153                gps_date
+ .data          0x00800189        0x1 gps/gpsraw.o
+                0x00800189                gps_msg_type
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+ .data          0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x0080018a                . = ALIGN (0x2)
+                0x0080018a                _edata = .
+                0x0080018a                PROVIDE (__data_end, .)
+
+.bss            0x0080018a      0x31e
+                0x0080018a                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x0080018a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x0080018a        0x0 main.o
+ .bss           0x0080018a        0x0 uart/uart.o
+ .bss           0x0080018a        0x1 key/key.o
+                0x0080018a                keycode
+ .bss           0x0080018b        0x0 led/led.o
+ .bss           0x0080018b        0x0 lcd/lcd1602.o
+ .bss           0x0080018b        0xb lcd/screen.o
+                0x0080018b                scn_mode
+ .bss           0x00800196        0x5 lcd/menu.o
+                0x00800199                mi_index
+                0x0080019a                mi_index_max
+                0x00800197                arrow_Pos_H
+                0x00800198                arrow_Pos_V
+                0x00800196                menu_type
+ .bss           0x0080019b        0xa timer/timer.o
+                0x008001a4                timer1_flag
+                0x0080019f                time_1
+                0x008001a3                timer0_flag
+                0x0080019b                time_0
+ .bss           0x008001a5      0x205 sd/sd_raw.o
+ .bss           0x008003aa       0x11 sd/partition.o
+ .bss           0x008003bb       0x7e sd/fat16.o
+ .bss           0x00800439       0x34 sd/sdreader.o
+                0x00800439                sd_buff_len
+ .bss           0x0080046d        0x5 gps/gps.o
+ .bss           0x00800472        0x1 gps/gpsraw.o
+                0x00800472                gpsraw_flag
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+ .bss           0x00800473        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800473        0x5 main.o
+                0x00800473                gpx_avlb
+                0x00800474                speeder_avlb
+                0x00800475                sd_avlb
+                0x00800476                gps_avlb
+                0x00800477                sys_state
+ COMMON         0x00800478        0x1 led/led.o
+                0x00800478                state
+ COMMON         0x00800479        0x2 lcd/menu.o
+                0x00800479                mi_entry
+ COMMON         0x0080047b       0x2c sd/sdreader.o
+                0x0080047b                retry
+                0x0080047c                logfile_entry
+ COMMON         0x008004a7        0x1 gps/gps.o
+                0x008004a7                gps_msg_ready
+                0x008004a8                PROVIDE (__bss_end, .)
+                0x00003978                __data_load_start = LOADADDR (.data)
+                0x00003aa2                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008004a8        0x0
+                0x008004a8                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008004a8                PROVIDE (__noinit_end, .)
+                0x008004a8                _end = .
+                0x008004a8                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x1c0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 uart/uart.o
+ .debug_aranges
+                0x00000040       0x20 key/key.o
+ .debug_aranges
+                0x00000060       0x20 led/led.o
+ .debug_aranges
+                0x00000080       0x20 lcd/lcd1602.o
+ .debug_aranges
+                0x000000a0       0x20 lcd/screen.o
+ .debug_aranges
+                0x000000c0       0x20 lcd/menu.o
+ .debug_aranges
+                0x000000e0       0x20 timer/timer.o
+ .debug_aranges
+                0x00000100       0x20 sd/sd_raw.o
+ .debug_aranges
+                0x00000120       0x20 sd/partition.o
+ .debug_aranges
+                0x00000140       0x20 sd/fat16.o
+ .debug_aranges
+                0x00000160       0x20 sd/sdreader.o
+ .debug_aranges
+                0x00000180       0x20 gps/gps.o
+ .debug_aranges
+                0x000001a0       0x20 gps/gpsraw.o
+
+.debug_pubnames
+                0x00000000      0x882
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x60 main.o
+ .debug_pubnames
+                0x00000060       0x4c uart/uart.o
+ .debug_pubnames
+                0x000000ac       0x38 key/key.o
+ .debug_pubnames
+                0x000000e4       0x4f led/led.o
+ .debug_pubnames
+                0x00000133       0xd3 lcd/lcd1602.o
+ .debug_pubnames
+                0x00000206       0x42 lcd/screen.o
+ .debug_pubnames
+                0x00000248       0xf6 lcd/menu.o
+ .debug_pubnames
+                0x0000033e       0xeb timer/timer.o
+ .debug_pubnames
+                0x00000429       0xc1 sd/sd_raw.o
+ .debug_pubnames
+                0x000004ea       0x39 sd/partition.o
+ .debug_pubnames
+                0x00000523      0x166 sd/fat16.o
+ .debug_pubnames
+                0x00000689       0x95 sd/sdreader.o
+ .debug_pubnames
+                0x0000071e       0xd7 gps/gps.o
+ .debug_pubnames
+                0x000007f5       0x8d gps/gpsraw.o
+
+.debug_info     0x00000000     0x41db
+ *(.debug_info)
+ .debug_info    0x00000000      0x726 main.o
+ .debug_info    0x00000726      0x164 uart/uart.o
+ .debug_info    0x0000088a      0x13b key/key.o
+ .debug_info    0x000009c5      0x107 led/led.o
+ .debug_info    0x00000acc      0x4fd lcd/lcd1602.o
+ .debug_info    0x00000fc9      0x3ce lcd/screen.o
+ .debug_info    0x00001397      0x3fb lcd/menu.o
+ .debug_info    0x00001792      0x1b8 timer/timer.o
+ .debug_info    0x0000194a      0x875 sd/sd_raw.o
+ .debug_info    0x000021bf      0x31b sd/partition.o
+ .debug_info    0x000024da     0x146c sd/fat16.o
+ .debug_info    0x00003946      0x3e1 sd/sdreader.o
+ .debug_info    0x00003d27      0x296 gps/gps.o
+ .debug_info    0x00003fbd      0x21e gps/gpsraw.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000     0x1144
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x19a main.o
+ .debug_abbrev  0x0000019a       0xb0 uart/uart.o
+ .debug_abbrev  0x0000024a       0xc7 key/key.o
+ .debug_abbrev  0x00000311       0x83 led/led.o
+ .debug_abbrev  0x00000394      0x174 lcd/lcd1602.o
+ .debug_abbrev  0x00000508       0xf8 lcd/screen.o
+ .debug_abbrev  0x00000600      0x1d3 lcd/menu.o
+ .debug_abbrev  0x000007d3       0xa1 timer/timer.o
+ .debug_abbrev  0x00000874      0x277 sd/sd_raw.o
+ .debug_abbrev  0x00000aeb       0xec sd/partition.o
+ .debug_abbrev  0x00000bd7      0x309 sd/fat16.o
+ .debug_abbrev  0x00000ee0       0xe8 sd/sdreader.o
+ .debug_abbrev  0x00000fc8       0xb4 gps/gps.o
+ .debug_abbrev  0x0000107c       0xc8 gps/gpsraw.o
+
+.debug_line     0x00000000     0x37d1
+ *(.debug_line)
+ .debug_line    0x00000000      0x56f main.o
+ .debug_line    0x0000056f      0x179 uart/uart.o
+ .debug_line    0x000006e8      0x1a3 key/key.o
+ .debug_line    0x0000088b      0x14c led/led.o
+ .debug_line    0x000009d7      0x414 lcd/lcd1602.o
+ .debug_line    0x00000deb      0x42e lcd/screen.o
+ .debug_line    0x00001219      0x449 lcd/menu.o
+ .debug_line    0x00001662      0x22e timer/timer.o
+ .debug_line    0x00001890      0x91b sd/sd_raw.o
+ .debug_line    0x000021ab      0x145 sd/partition.o
+ .debug_line    0x000022f0      0xcc8 sd/fat16.o
+ .debug_line    0x00002fb8      0x1b1 sd/sdreader.o
+ .debug_line    0x00003169      0x27f gps/gps.o
+ .debug_line    0x000033e8      0x3e9 gps/gpsraw.o
+
+.debug_frame    0x00000000      0x650
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x20 main.o
+ .debug_frame   0x00000020       0x50 uart/uart.o
+ .debug_frame   0x00000070       0x30 key/key.o
+ .debug_frame   0x000000a0       0x50 led/led.o
+ .debug_frame   0x000000f0      0x100 lcd/lcd1602.o
+ .debug_frame   0x000001f0       0x30 lcd/screen.o
+ .debug_frame   0x00000220       0x50 lcd/menu.o
+ .debug_frame   0x00000270       0xb0 timer/timer.o
+ .debug_frame   0x00000320       0xb0 sd/sd_raw.o
+ .debug_frame   0x000003d0       0x30 sd/partition.o
+ .debug_frame   0x00000400      0x160 sd/fat16.o
+ .debug_frame   0x00000560       0x50 sd/sdreader.o
+ .debug_frame   0x000005b0       0x40 gps/gps.o
+ .debug_frame   0x000005f0       0x60 gps/gpsraw.o
+
+.debug_str      0x00000000     0x1082
+ *(.debug_str)
+ .debug_str     0x00000000      0x157 main.o
+                                0x1a1 (size before relaxing)
+ .debug_str     0x00000157       0x52 uart/uart.o
+                                 0xfe (size before relaxing)
+ .debug_str     0x000001a9       0x1c key/key.o
+                                0x105 (size before relaxing)
+ .debug_str     0x000001c5       0x33 led/led.o
+                                 0xd7 (size before relaxing)
+ .debug_str     0x000001f8       0xc0 lcd/lcd1602.o
+                                0x1dc (size before relaxing)
+ .debug_str     0x000002b8      0x134 lcd/screen.o
+                                0x1ea (size before relaxing)
+ .debug_str     0x000003ec      0x148 lcd/menu.o
+                                0x262 (size before relaxing)
+ .debug_str     0x00000534       0xac timer/timer.o
+                                0x156 (size before relaxing)
+ .debug_str     0x000005e0      0x25f sd/sd_raw.o
+                                0x342 (size before relaxing)
+ .debug_str     0x0000083f      0x11e sd/partition.o
+                                0x1ff (size before relaxing)
+ .debug_str     0x0000095d      0x5ef sd/fat16.o
+                                0x81d (size before relaxing)
+ .debug_str     0x00000f4c       0x6d sd/sdreader.o
+                                0x28d (size before relaxing)
+ .debug_str     0x00000fb9       0x5b gps/gps.o
+                                0x171 (size before relaxing)
+ .debug_str     0x00001014       0x6e gps/gpsraw.o
+                                0x1a1 (size before relaxing)
+
+.debug_loc      0x00000000     0x2c55
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x37f main.o
+ .debug_loc     0x0000037f       0xbf uart/uart.o
+ .debug_loc     0x0000043e       0x18 key/key.o
+ .debug_loc     0x00000456       0x7b led/led.o
+ .debug_loc     0x000004d1      0x2e1 lcd/lcd1602.o
+ .debug_loc     0x000007b2       0x3c lcd/screen.o
+ .debug_loc     0x000007ee      0x15d lcd/menu.o
+ .debug_loc     0x0000094b      0xb3d sd/sd_raw.o
+ .debug_loc     0x00001488      0x1da sd/partition.o
+ .debug_loc     0x00001662     0x15d5 sd/fat16.o
+ .debug_loc     0x00002c37       0x1e gps/gpsraw.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(main.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000      0x2d0
+ .debug_ranges  0x00000000       0xc0 main.o
+ .debug_ranges  0x000000c0       0x60 lcd/menu.o
+ .debug_ranges  0x00000120       0xc0 sd/sd_raw.o
+ .debug_ranges  0x000001e0       0xf0 sd/fat16.o
+
+Cross Reference Table
+
+Symbol                                            File
+Disp_Char                                         lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+Disp_Clear                                        lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+                                                  main.o
+Disp_Num                                          lcd/lcd1602.o
+                                                  lcd/screen.o
+Disp_Str                                          lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+Disp_Str_P                                        lcd/lcd1602.o
+                                                  lcd/screen.o
+LCD_Init                                          lcd/lcd1602.o
+                                                  main.o
+LCD_ReadBusy                                      lcd/lcd1602.o
+LED_init                                          led/led.o
+                                                  main.o
+LED_off                                           led/led.o
+                                                  gps/gps.o
+                                                  main.o
+LED_on                                            led/led.o
+                                                  gps/gps.o
+                                                  main.o
+LED_switch                                        led/led.o
+                                                  gps/gpsraw.o
+                                                  timer/timer.o
+Locate_xy                                         lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+Write_Comand                                      lcd/lcd1602.o
+Write_Data                                        lcd/lcd1602.o
+XY_Char                                           lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+                                                  main.o
+XY_Num                                            lcd/lcd1602.o
+                                                  main.o
+XY_Str                                            lcd/lcd1602.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+XY_Str_P                                          lcd/lcd1602.o
+                                                  lcd/screen.o
+                                                  main.o
+__bad_interrupt                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__bss_end                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+__data_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+__data_start                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+__divmodhi4                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+                                                  sd/fat16.o
+__do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                                                  gps/gpsraw.o
+                                                  gps/gps.o
+                                                  sd/sdreader.o
+                                                  sd/fat16.o
+                                                  sd/partition.o
+                                                  sd/sd_raw.o
+                                                  timer/timer.o
+                                                  lcd/menu.o
+                                                  lcd/screen.o
+                                                  led/led.o
+                                                  key/key.o
+                                                  main.o
+__do_copy_data                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                                                  gps/gpsraw.o
+                                                  gps/gps.o
+                                                  sd/sdreader.o
+                                                  sd/fat16.o
+                                                  lcd/menu.o
+__heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__mulsi3                                          c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                                                  sd/fat16.o
+__stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__udivmodhi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+                                                  sd/fat16.o
+__udivmodqi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                                                  lcd/screen.o
+__udivmodsi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                                                  sd/fat16.o
+__vector_1                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_10                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_11                                       timer/timer.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_12                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_13                                       gps/gps.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_14                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_15                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_16                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_17                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_18                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_19                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_2                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_20                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_3                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_4                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_5                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_6                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_7                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_8                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_9                                        timer/timer.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vector_default                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+__vectors                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+_div                                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodhi4.o)
+_exit                                             c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+arrow_Pos_H                                       lcd/menu.o
+arrow_Pos_V                                       lcd/menu.o
+exit                                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+fat16_close                                       sd/fat16.o
+fat16_close_file                                  sd/fat16.o
+                                                  sd/sdreader.o
+fat16_create_file                                 sd/fat16.o
+                                                  sd/sdreader.o
+fat16_get_file_modification_date                  sd/fat16.o
+fat16_get_file_modification_time                  sd/fat16.o
+fat16_get_fs_free                                 sd/fat16.o
+fat16_get_fs_size                                 sd/fat16.o
+fat16_get_root_dir_entry                          sd/fat16.o
+                                                  sd/sdreader.o
+fat16_open                                        sd/fat16.o
+                                                  sd/sdreader.o
+fat16_open_dir                                    sd/fat16.o
+                                                  sd/sdreader.o
+fat16_open_file                                   sd/fat16.o
+                                                  sd/sdreader.o
+fat16_read_dir                                    sd/fat16.o
+fat16_read_file                                   sd/fat16.o
+fat16_reset_dir                                   sd/fat16.o
+fat16_write_file                                  sd/fat16.o
+                                                  sd/sdreader.o
+filename                                          sd/sdreader.o
+                                                  gps/gpsraw.o
+finish_file                                       sd/sdreader.o
+                                                  gps/gpsraw.o
+finish_logfile                                    gps/gpsraw.o
+                                                  lcd/menu.o
+gps_EW                                            gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_NS                                            gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_NoS                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_alt                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_avlb                                          main.o
+gps_date                                          gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_dir                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_init                                          gps/gps.o
+                                                  main.o
+gps_lat                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_lon                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_msg_ready                                     gps/gps.o
+                                                  main.o
+gps_msg_type                                      gps/gpsraw.o
+gps_set_arg                                       gps/gps.o
+                                                  main.o
+gps_spd                                           gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gps_state                                         gps/gps.o
+                                                  gps/gpsraw.o
+                                                  main.o
+gps_time                                          gps/gps.o
+                                                  gps/gpsraw.o
+                                                  lcd/screen.o
+gpsraw_flag                                       gps/gpsraw.o
+                                                  main.o
+gpx_avlb                                          main.o
+key_init                                          key/key.o
+                                                  main.o
+key_scan                                          key/key.o
+                                                  lcd/menu.o
+                                                  main.o
+keycode                                           key/key.o
+                                                  lcd/menu.o
+                                                  main.o
+logfile_entry                                     sd/sdreader.o
+m_arrow                                           lcd/menu.o
+                                                  main.o
+main                                              main.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+memcpy                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memcpy.o)
+                                                  sd/fat16.o
+                                                  sd/sd_raw.o
+memset                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(memset.o)
+                                                  sd/fat16.o
+menu_init                                         lcd/menu.o
+                                                  main.o
+menu_start                                        lcd/menu.o
+                                                  main.o
+menu_type                                         lcd/menu.o
+mi_cancel                                         lcd/menu.o
+mi_entry                                          lcd/menu.o
+mi_finish                                         lcd/menu.o
+mi_index                                          lcd/menu.o
+mi_index_max                                      lcd/menu.o
+mi_menu                                           lcd/menu.o
+mi_ready                                          lcd/menu.o
+mi_save_pos                                       lcd/menu.o
+mi_settings                                       lcd/menu.o
+mi_start                                          lcd/menu.o
+new_file                                          sd/sdreader.o
+                                                  gps/gpsraw.o
+new_logfile                                       gps/gpsraw.o
+                                                  main.o
+partition_close                                   sd/partition.o
+partition_open                                    sd/partition.o
+                                                  sd/sdreader.o
+retry                                             sd/sdreader.o
+save_position                                     gps/gpsraw.o
+                                                  lcd/menu.o
+                                                  main.o
+scn_mode                                          lcd/screen.o
+                                                  lcd/menu.o
+                                                  main.o
+sd_avlb                                           main.o
+sd_buff                                           sd/sdreader.o
+                                                  gps/gpsraw.o
+sd_buff_len                                       sd/sdreader.o
+                                                  gps/gpsraw.o
+sd_raw_available                                  sd/sd_raw.o
+sd_raw_get_info                                   sd/sd_raw.o
+sd_raw_init                                       sd/sd_raw.o
+                                                  sd/sdreader.o
+sd_raw_locked                                     sd/sd_raw.o
+sd_raw_read                                       sd/sd_raw.o
+                                                  sd/sdreader.o
+sd_raw_read_interval                              sd/sd_raw.o
+                                                  sd/sdreader.o
+sd_raw_sync                                       sd/sd_raw.o
+                                                  sd/sdreader.o
+sd_raw_write                                      sd/sd_raw.o
+                                                  sd/sdreader.o
+sd_raw_write_interval                             sd/sd_raw.o
+                                                  sd/sdreader.o
+sdreader_init                                     sd/sdreader.o
+                                                  main.o
+set_screen                                        lcd/screen.o
+                                                  gps/gpsraw.o
+                                                  main.o
+speeder_avlb                                      main.o
+state                                             led/led.o
+strcmp                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strcmp.o)
+                                                  sd/fat16.o
+strncpy                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strncpy.o)
+                                                  sd/fat16.o
+strrchr                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrchr.o)
+                                                  sd/fat16.o
+switch_scn_flag                                   lcd/screen.o
+                                                  gps/gpsraw.o
+                                                  main.o
+sys_state                                         lcd/menu.o
+                                                  main.o
+time_0                                            timer/timer.o
+time_1                                            timer/timer.o
+timer0_flag                                       timer/timer.o
+timer0_init                                       timer/timer.o
+                                                  main.o
+timer0_reset                                      timer/timer.o
+timer0_start                                      timer/timer.o
+timer0_stop                                       timer/timer.o
+timer1_flag                                       timer/timer.o
+                                                  main.o
+timer1_init                                       timer/timer.o
+                                                  main.o
+timer1_reset                                      timer/timer.o
+timer1_start                                      timer/timer.o
+                                                  main.o
+timer1_stop                                       timer/timer.o
+uart_init                                         uart/uart.o
+                                                  main.o
+uart_putc                                         uart/uart.o
+                                                  gps/gps.o
+uart_puts                                         uart/uart.o
+uart_puts_p                                       uart/uart.o
+                                                  gps/gps.o
+write_buff                                        sd/sdreader.o
+                                                  gps/gpsraw.o
+write_gps_head                                    gps/gpsraw.o
+                                                  main.o
+write_gps_msg                                     gps/gpsraw.o
+                                                  main.o

@@ -1,0 +1,150 @@
+   1               		.file	"key.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	key_init
+  18               	key_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 84B3      		in r24,52-32
+  25 0002 8C7F      		andi r24,lo8(-4)
+  26 0004 84BB      		out 52-32,r24
+  27               	.LM3:
+  28 0006 85B3      		in r24,53-32
+  29 0008 8360      		ori r24,lo8(3)
+  30 000a 85BB      		out 53-32,r24
+  31               	.LM4:
+  32 000c 81B3      		in r24,49-32
+  33 000e 8F70      		andi r24,lo8(15)
+  34 0010 81BB      		out 49-32,r24
+  35               	.LM5:
+  36 0012 82B3      		in r24,50-32
+  37 0014 806F      		ori r24,lo8(-16)
+  38 0016 82BB      		out 50-32,r24
+  39               	/* epilogue start */
+  40               	.LM6:
+  41 0018 0895      		ret
+  42               	.LFE6:
+  44               	.global	key_scan
+  46               	key_scan:
+  47               	.LFB7:
+  48               	.LM7:
+  49               	/* prologue: function */
+  50               	/* frame size = 0 */
+  51               	.LM8:
+  52 001a 80B3      		in r24,48-32
+  53 001c 807F      		andi r24,lo8(-16)
+  54 001e 803F      		cpi r24,lo8(-16)
+  55 0020 01F4      		brne .L4
+  56 0022 83B3      		in r24,51-32
+  57 0024 8370      		andi r24,lo8(3)
+  58 0026 8330      		cpi r24,lo8(3)
+  59 0028 01F0      		breq .L5
+  60               	.L4:
+  61               	.LBB12:
+  62               	.LBB13:
+  63               	.LBB14:
+  64               	.LBB15:
+  65               	.LM9:
+  66 002a 80E4      		ldi r24,lo8(-25536)
+  67 002c 9CE9      		ldi r25,hi8(-25536)
+  68               	.LVL0:
+  69               	/* #APP */
+  70               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  71 002e 0197      		1: sbiw r24,1
+  72 0030 01F4      		brne 1b
+  73               	 ;  0 "" 2
+  74               	/* #NOAPP */
+  75               	.L5:
+  76               	.LBE15:
+  77               	.LBE14:
+  78               	.LBE13:
+  79               	.LBE12:
+  80               	.LM10:
+  81 0032 80B3      		in r24,48-32
+  82               	.LVL1:
+  83 0034 807F      		andi r24,lo8(-16)
+  84 0036 803F      		cpi r24,lo8(-16)
+  85 0038 01F4      		brne .L6
+  86 003a 83B3      		in r24,51-32
+  87 003c 8370      		andi r24,lo8(3)
+  88 003e 8330      		cpi r24,lo8(3)
+  89 0040 01F0      		breq .L7
+  90               	.L6:
+  91               	.LM11:
+  92 0042 8699      		sbic 48-32,6
+  93 0044 00C0      		rjmp .L8
+  94               	.LM12:
+  95 0046 81E0      		ldi r24,lo8(1)
+  96 0048 00C0      		rjmp .L15
+  97               	.L8:
+  98               	.LM13:
+  99 004a 8599      		sbic 48-32,5
+ 100 004c 00C0      		rjmp .L10
+ 101               	.LM14:
+ 102 004e 82E0      		ldi r24,lo8(2)
+ 103 0050 00C0      		rjmp .L15
+ 104               	.L10:
+ 105               	.LM15:
+ 106 0052 8499      		sbic 48-32,4
+ 107 0054 00C0      		rjmp .L11
+ 108               	.LM16:
+ 109 0056 83E0      		ldi r24,lo8(3)
+ 110 0058 00C0      		rjmp .L15
+ 111               	.L11:
+ 112               	.LM17:
+ 113 005a 9999      		sbic 51-32,1
+ 114 005c 00C0      		rjmp .L12
+ 115               	.LM18:
+ 116 005e 84E0      		ldi r24,lo8(4)
+ 117 0060 00C0      		rjmp .L15
+ 118               	.L12:
+ 119               	.LM19:
+ 120 0062 8799      		sbic 48-32,7
+ 121 0064 00C0      		rjmp .L13
+ 122               	.LM20:
+ 123 0066 85E0      		ldi r24,lo8(5)
+ 124 0068 00C0      		rjmp .L15
+ 125               	.L13:
+ 126               	.LM21:
+ 127 006a 9899      		sbic 51-32,0
+ 128 006c 00C0      		rjmp .L7
+ 129               	.LM22:
+ 130 006e 86E0      		ldi r24,lo8(6)
+ 131               	.L15:
+ 132 0070 8093 0000 		sts keycode,r24
+ 133 0074 0895      		ret
+ 134               	.L7:
+ 135               	.LM23:
+ 136 0076 1092 0000 		sts keycode,__zero_reg__
+ 137 007a 80E0      		ldi r24,lo8(0)
+ 138               	.LM24:
+ 139 007c 0895      		ret
+ 140               	.LFE7:
+ 142               	.global	keycode
+ 143               	.global	keycode
+ 144               		.section .bss
+ 147               	keycode:
+ 148 0000 00        		.skip 1,0
+ 181               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 key.c
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:2      *ABS*:0000003f __SREG__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:3      *ABS*:0000003e __SP_H__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:4      *ABS*:0000003d __SP_L__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:5      *ABS*:00000034 __CCP__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:18     .text:00000000 key_init
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:46     .text:0000001a key_scan
+C:\Users\CUI\AppData\Local\Temp/ccuzBAuC.s:147    .bss:00000000 keycode
+
+UNDEFINED SYMBOLS
+__do_clear_bss

@@ -1,0 +1,454 @@
+   1               		.file	"gpsraw.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	write_gps_msg
+  18               	write_gps_msg:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 86E0      		ldi r24,lo8(6)
+  25 0002 0E94 0000 		call LED_switch
+  26               	.LM3:
+  27 0006 84E2      		ldi r24,lo8(36)
+  28 0008 8093 0000 		sts sd_buff,r24
+  29               	.LM4:
+  30 000c 8CE7      		ldi r24,lo8(124)
+  31 000e 8093 0000 		sts sd_buff+1,r24
+  32 0012 E0E0      		ldi r30,lo8(gps_date)
+  33 0014 F0E0      		ldi r31,hi8(gps_date)
+  34 0016 A0E0      		ldi r26,lo8(sd_buff+2)
+  35 0018 B0E0      		ldi r27,hi8(sd_buff+2)
+  36               	.L2:
+  37               	.LM5:
+  38 001a 8191      		ld r24,Z+
+  39 001c 8D93      		st X+,r24
+  40               	.LM6:
+  41 001e 80E0      		ldi r24,hi8(gps_date+6)
+  42 0020 E030      		cpi r30,lo8(gps_date+6)
+  43 0022 F807      		cpc r31,r24
+  44 0024 01F4      		brne .L2
+  45               	.LM7:
+  46 0026 8CE7      		ldi r24,lo8(124)
+  47 0028 8093 0000 		sts sd_buff+8,r24
+  48 002c E0E0      		ldi r30,lo8(gps_time)
+  49 002e F0E0      		ldi r31,hi8(gps_time)
+  50 0030 A0E0      		ldi r26,lo8(sd_buff+9)
+  51 0032 B0E0      		ldi r27,hi8(sd_buff+9)
+  52               	.L3:
+  53               	.LM8:
+  54 0034 8191      		ld r24,Z+
+  55 0036 8D93      		st X+,r24
+  56               	.LM9:
+  57 0038 80E0      		ldi r24,hi8(gps_time+10)
+  58 003a E030      		cpi r30,lo8(gps_time+10)
+  59 003c F807      		cpc r31,r24
+  60 003e 01F4      		brne .L3
+  61               	.LM10:
+  62 0040 9CE7      		ldi r25,lo8(124)
+  63 0042 9093 0000 		sts sd_buff+19,r25
+  64               	.LM11:
+  65 0046 8091 0000 		lds r24,gps_state
+  66 004a 8093 0000 		sts sd_buff+20,r24
+  67               	.LM12:
+  68 004e 9093 0000 		sts sd_buff+21,r25
+  69 0052 E0E0      		ldi r30,lo8(gps_lat)
+  70 0054 F0E0      		ldi r31,hi8(gps_lat)
+  71 0056 A0E0      		ldi r26,lo8(sd_buff+22)
+  72 0058 B0E0      		ldi r27,hi8(sd_buff+22)
+  73               	.L4:
+  74               	.LM13:
+  75 005a 8191      		ld r24,Z+
+  76 005c 8D93      		st X+,r24
+  77               	.LM14:
+  78 005e 80E0      		ldi r24,hi8(gps_lat+9)
+  79 0060 E030      		cpi r30,lo8(gps_lat+9)
+  80 0062 F807      		cpc r31,r24
+  81 0064 01F4      		brne .L4
+  82               	.LM15:
+  83 0066 9CE7      		ldi r25,lo8(124)
+  84 0068 9093 0000 		sts sd_buff+31,r25
+  85               	.LM16:
+  86 006c 8091 0000 		lds r24,gps_NS
+  87 0070 8093 0000 		sts sd_buff+32,r24
+  88               	.LM17:
+  89 0074 9093 0000 		sts sd_buff+33,r25
+  90 0078 20E0      		ldi r18,lo8(0)
+  91 007a 30E0      		ldi r19,hi8(0)
+  92               	.L5:
+  93               	.LM18:
+  94 007c F901      		movw r30,r18
+  95 007e E050      		subi r30,lo8(-(sd_buff))
+  96 0080 F040      		sbci r31,hi8(-(sd_buff))
+  97 0082 D901      		movw r26,r18
+  98 0084 A050      		subi r26,lo8(-(gps_lon))
+  99 0086 B040      		sbci r27,hi8(-(gps_lon))
+ 100 0088 8C91      		ld r24,X
+ 101 008a 82A3      		std Z+34,r24
+ 102 008c 2F5F      		subi r18,lo8(-(1))
+ 103 008e 3F4F      		sbci r19,hi8(-(1))
+ 104               	.LM19:
+ 105 0090 2A30      		cpi r18,10
+ 106 0092 3105      		cpc r19,__zero_reg__
+ 107 0094 01F4      		brne .L5
+ 108               	.LM20:
+ 109 0096 9CE7      		ldi r25,lo8(124)
+ 110 0098 9093 0000 		sts sd_buff+44,r25
+ 111               	.LM21:
+ 112 009c 8091 0000 		lds r24,gps_EW
+ 113 00a0 8093 0000 		sts sd_buff+45,r24
+ 114               	.LM22:
+ 115 00a4 9093 0000 		sts sd_buff+46,r25
+ 116 00a8 20E0      		ldi r18,lo8(0)
+ 117 00aa 30E0      		ldi r19,hi8(0)
+ 118               	.L6:
+ 119               	.LM23:
+ 120 00ac F901      		movw r30,r18
+ 121 00ae E050      		subi r30,lo8(-(sd_buff))
+ 122 00b0 F040      		sbci r31,hi8(-(sd_buff))
+ 123 00b2 D901      		movw r26,r18
+ 124 00b4 A050      		subi r26,lo8(-(gps_alt))
+ 125 00b6 B040      		sbci r27,hi8(-(gps_alt))
+ 126 00b8 8C91      		ld r24,X
+ 127 00ba 87A7      		std Z+47,r24
+ 128 00bc 2F5F      		subi r18,lo8(-(1))
+ 129 00be 3F4F      		sbci r19,hi8(-(1))
+ 130               	.LM24:
+ 131 00c0 2530      		cpi r18,5
+ 132 00c2 3105      		cpc r19,__zero_reg__
+ 133 00c4 01F4      		brne .L6
+ 134               	.LM25:
+ 135 00c6 8CE7      		ldi r24,lo8(124)
+ 136 00c8 8093 0000 		sts sd_buff+52,r24
+ 137               	.LM26:
+ 138 00cc 9091 0000 		lds r25,gps_NoS
+ 139 00d0 9093 0000 		sts sd_buff+53,r25
+ 140 00d4 9091 0000 		lds r25,gps_NoS+1
+ 141 00d8 9093 0000 		sts sd_buff+54,r25
+ 142               	.LM27:
+ 143 00dc 8093 0000 		sts sd_buff+55,r24
+ 144 00e0 20E0      		ldi r18,lo8(0)
+ 145 00e2 30E0      		ldi r19,hi8(0)
+ 146               	.L7:
+ 147               	.LM28:
+ 148 00e4 F901      		movw r30,r18
+ 149 00e6 E050      		subi r30,lo8(-(sd_buff))
+ 150 00e8 F040      		sbci r31,hi8(-(sd_buff))
+ 151 00ea D901      		movw r26,r18
+ 152 00ec A050      		subi r26,lo8(-(gps_spd))
+ 153 00ee B040      		sbci r27,hi8(-(gps_spd))
+ 154 00f0 8C91      		ld r24,X
+ 155 00f2 80AF      		std Z+56,r24
+ 156 00f4 2F5F      		subi r18,lo8(-(1))
+ 157 00f6 3F4F      		sbci r19,hi8(-(1))
+ 158               	.LM29:
+ 159 00f8 2530      		cpi r18,5
+ 160 00fa 3105      		cpc r19,__zero_reg__
+ 161 00fc 01F4      		brne .L7
+ 162               	.LM30:
+ 163 00fe 8CE7      		ldi r24,lo8(124)
+ 164 0100 8093 0000 		sts sd_buff+61,r24
+ 165 0104 20E0      		ldi r18,lo8(0)
+ 166 0106 30E0      		ldi r19,hi8(0)
+ 167               	.L8:
+ 168               	.LM31:
+ 169 0108 F901      		movw r30,r18
+ 170 010a E050      		subi r30,lo8(-(sd_buff))
+ 171 010c F040      		sbci r31,hi8(-(sd_buff))
+ 172 010e D901      		movw r26,r18
+ 173 0110 A050      		subi r26,lo8(-(gps_dir))
+ 174 0112 B040      		sbci r27,hi8(-(gps_dir))
+ 175 0114 8C91      		ld r24,X
+ 176 0116 86AF      		std Z+62,r24
+ 177 0118 2F5F      		subi r18,lo8(-(1))
+ 178 011a 3F4F      		sbci r19,hi8(-(1))
+ 179               	.LM32:
+ 180 011c 2630      		cpi r18,6
+ 181 011e 3105      		cpc r19,__zero_reg__
+ 182 0120 01F4      		brne .L8
+ 183               	.LM33:
+ 184 0122 9CE7      		ldi r25,lo8(124)
+ 185 0124 9093 0000 		sts sd_buff+68,r25
+ 186               	.LM34:
+ 187 0128 8091 0000 		lds r24,gps_msg_type
+ 188 012c 8093 0000 		sts sd_buff+69,r24
+ 189               	.LM35:
+ 190 0130 9093 0000 		sts sd_buff+70,r25
+ 191               	.LM36:
+ 192 0134 83E2      		ldi r24,lo8(35)
+ 193 0136 8093 0000 		sts sd_buff+71,r24
+ 194               	.LM37:
+ 195 013a 8AE0      		ldi r24,lo8(10)
+ 196 013c 8093 0000 		sts sd_buff+72,r24
+ 197               	.LM38:
+ 198 0140 89E4      		ldi r24,lo8(73)
+ 199 0142 8093 0000 		sts sd_buff_len,r24
+ 200               	.LM39:
+ 201 0146 0E94 0000 		call write_buff
+ 202               	/* epilogue start */
+ 203               	.LM40:
+ 204 014a 0895      		ret
+ 205               	.LFE6:
+ 207               	.global	write_gps_head
+ 209               	write_gps_head:
+ 210               	.LFB3:
+ 211               	.LM41:
+ 212               	/* prologue: function */
+ 213               	/* frame size = 0 */
+ 214               	.LM42:
+ 215 014c 86E0      		ldi r24,lo8(6)
+ 216 014e 0E94 0000 		call LED_switch
+ 217               	.LM43:
+ 218 0152 87E4      		ldi r24,lo8(71)
+ 219 0154 8093 0000 		sts sd_buff,r24
+ 220               	.LM44:
+ 221 0158 80E5      		ldi r24,lo8(80)
+ 222 015a 8093 0000 		sts sd_buff+1,r24
+ 223               	.LM45:
+ 224 015e 93E5      		ldi r25,lo8(83)
+ 225 0160 9093 0000 		sts sd_buff+2,r25
+ 226               	.LM46:
+ 227 0164 8FE5      		ldi r24,lo8(95)
+ 228 0166 8093 0000 		sts sd_buff+3,r24
+ 229               	.LM47:
+ 230 016a 9093 0000 		sts sd_buff+4,r25
+ 231               	.LM48:
+ 232 016e 94E5      		ldi r25,lo8(84)
+ 233 0170 9093 0000 		sts sd_buff+5,r25
+ 234               	.LM49:
+ 235 0174 81E4      		ldi r24,lo8(65)
+ 236 0176 8093 0000 		sts sd_buff+6,r24
+ 237               	.LM50:
+ 238 017a 82E5      		ldi r24,lo8(82)
+ 239 017c 8093 0000 		sts sd_buff+7,r24
+ 240               	.LM51:
+ 241 0180 9093 0000 		sts sd_buff+8,r25
+ 242               	.LM52:
+ 243 0184 80E4      		ldi r24,lo8(64)
+ 244 0186 8093 0000 		sts sd_buff+9,r24
+ 245               	.LM53:
+ 246 018a 82E2      		ldi r24,lo8(34)
+ 247 018c 8093 0000 		sts sd_buff+10,r24
+ 248 0190 E0E0      		ldi r30,lo8(filename)
+ 249 0192 F0E0      		ldi r31,hi8(filename)
+ 250 0194 A0E0      		ldi r26,lo8(sd_buff+11)
+ 251 0196 B0E0      		ldi r27,hi8(sd_buff+11)
+ 252               	.L18:
+ 253               	.LM54:
+ 254 0198 8191      		ld r24,Z+
+ 255 019a 8D93      		st X+,r24
+ 256               	.LM55:
+ 257 019c 80E0      		ldi r24,hi8(filename+12)
+ 258 019e E030      		cpi r30,lo8(filename+12)
+ 259 01a0 F807      		cpc r31,r24
+ 260 01a2 01F4      		brne .L18
+ 261               	.LM56:
+ 262 01a4 82E2      		ldi r24,lo8(34)
+ 263 01a6 8093 0000 		sts sd_buff+23,r24
+ 264               	.LM57:
+ 265 01aa 8AE0      		ldi r24,lo8(10)
+ 266 01ac 8093 0000 		sts sd_buff+24,r24
+ 267               	.LM58:
+ 268 01b0 89E1      		ldi r24,lo8(25)
+ 269 01b2 8093 0000 		sts sd_buff_len,r24
+ 270               	.LM59:
+ 271 01b6 82E0      		ldi r24,lo8(2)
+ 272 01b8 8093 0000 		sts gpsraw_flag,r24
+ 273               	.LM60:
+ 274 01bc 0E94 0000 		call write_buff
+ 275               	/* epilogue start */
+ 276               	.LM61:
+ 277 01c0 0895      		ret
+ 278               	.LFE3:
+ 280               	.global	save_position
+ 282               	save_position:
+ 283               	.LFB5:
+ 284               	.LM62:
+ 285               	/* prologue: function */
+ 286               	/* frame size = 0 */
+ 287               	.LM63:
+ 288 01c2 83E0      		ldi r24,lo8(3)
+ 289 01c4 0E94 0000 		call switch_scn_flag
+ 290               	.LM64:
+ 291 01c8 85E0      		ldi r24,lo8(5)
+ 292 01ca 0E94 0000 		call set_screen
+ 293               	.LM65:
+ 294 01ce 81E4      		ldi r24,lo8(65)
+ 295 01d0 8093 0000 		sts gps_msg_type,r24
+ 296               	.LM66:
+ 297 01d4 0E94 0000 		call write_gps_msg
+ 298               	.LM67:
+ 299 01d8 8EE4      		ldi r24,lo8(78)
+ 300 01da 8093 0000 		sts gps_msg_type,r24
+ 301               	/* epilogue start */
+ 302               	.LM68:
+ 303 01de 0895      		ret
+ 304               	.LFE5:
+ 306               	.global	finish_logfile
+ 308               	finish_logfile:
+ 309               	.LFB4:
+ 310               	.LM69:
+ 311               	/* prologue: function */
+ 312               	/* frame size = 0 */
+ 313               	.LM70:
+ 314 01e0 86E0      		ldi r24,lo8(6)
+ 315 01e2 0E94 0000 		call LED_switch
+ 316               	.LM71:
+ 317 01e6 87E4      		ldi r24,lo8(71)
+ 318 01e8 8093 0000 		sts sd_buff,r24
+ 319               	.LM72:
+ 320 01ec 80E5      		ldi r24,lo8(80)
+ 321 01ee 8093 0000 		sts sd_buff+1,r24
+ 322               	.LM73:
+ 323 01f2 23E5      		ldi r18,lo8(83)
+ 324 01f4 2093 0000 		sts sd_buff+2,r18
+ 325               	.LM74:
+ 326 01f8 8FE5      		ldi r24,lo8(95)
+ 327 01fa 8093 0000 		sts sd_buff+3,r24
+ 328               	.LM75:
+ 329 01fe 86E4      		ldi r24,lo8(70)
+ 330 0200 8093 0000 		sts sd_buff+4,r24
+ 331               	.LM76:
+ 332 0204 99E4      		ldi r25,lo8(73)
+ 333 0206 9093 0000 		sts sd_buff+5,r25
+ 334               	.LM77:
+ 335 020a 8EE4      		ldi r24,lo8(78)
+ 336 020c 8093 0000 		sts sd_buff+6,r24
+ 337               	.LM78:
+ 338 0210 9093 0000 		sts sd_buff+7,r25
+ 339               	.LM79:
+ 340 0214 2093 0000 		sts sd_buff+8,r18
+ 341               	.LM80:
+ 342 0218 88E4      		ldi r24,lo8(72)
+ 343 021a 8093 0000 		sts sd_buff+9,r24
+ 344               	.LM81:
+ 345 021e 8AE0      		ldi r24,lo8(10)
+ 346 0220 8093 0000 		sts sd_buff+10,r24
+ 347               	.LM82:
+ 348 0224 8BE0      		ldi r24,lo8(11)
+ 349 0226 8093 0000 		sts sd_buff_len,r24
+ 350               	.LM83:
+ 351 022a 0E94 0000 		call write_buff
+ 352               	.LM84:
+ 353 022e 8823      		tst r24
+ 354               	.LVL0:
+ 355 0230 01F4      		brne .L24
+ 356               	.LM85:
+ 357 0232 1092 0000 		sts gpsraw_flag,__zero_reg__
+ 358               	.LM86:
+ 359 0236 0E94 0000 		call finish_file
+ 360               	.LVL1:
+ 361               	.L24:
+ 362               	.LVL2:
+ 363               	.LM87:
+ 364 023a 0895      		ret
+ 365               	.LFE4:
+ 367               	.global	new_logfile
+ 369               	new_logfile:
+ 370               	.LFB2:
+ 371               	.LM88:
+ 372               	/* prologue: function */
+ 373               	/* frame size = 0 */
+ 374               	.LM89:
+ 375 023c 86E0      		ldi r24,lo8(6)
+ 376 023e 0E94 0000 		call LED_switch
+ 377               	.LM90:
+ 378 0242 8091 0000 		lds r24,gps_date+4
+ 379 0246 8093 0000 		sts filename,r24
+ 380               	.LM91:
+ 381 024a 8091 0000 		lds r24,gps_date+5
+ 382 024e 8093 0000 		sts filename+1,r24
+ 383               	.LM92:
+ 384 0252 8091 0000 		lds r24,gps_date+2
+ 385 0256 8093 0000 		sts filename+2,r24
+ 386               	.LM93:
+ 387 025a 8091 0000 		lds r24,gps_date+3
+ 388 025e 8093 0000 		sts filename+3,r24
+ 389               	.LM94:
+ 390 0262 8091 0000 		lds r24,gps_date
+ 391 0266 8093 0000 		sts filename+4,r24
+ 392               	.LM95:
+ 393 026a 8091 0000 		lds r24,gps_date+1
+ 394 026e 8093 0000 		sts filename+5,r24
+ 395               	.LM96:
+ 396 0272 8FE5      		ldi r24,lo8(95)
+ 397 0274 8093 0000 		sts filename+6,r24
+ 398               	.LM97:
+ 399 0278 81E4      		ldi r24,lo8(65)
+ 400 027a 8093 0000 		sts filename+7,r24
+ 401               	.LM98:
+ 402 027e 8EE2      		ldi r24,lo8(46)
+ 403 0280 8093 0000 		sts filename+8,r24
+ 404               	.LM99:
+ 405 0284 82E7      		ldi r24,lo8(114)
+ 406 0286 8093 0000 		sts filename+9,r24
+ 407               	.LM100:
+ 408 028a 81E6      		ldi r24,lo8(97)
+ 409 028c 8093 0000 		sts filename+10,r24
+ 410               	.LM101:
+ 411 0290 87E7      		ldi r24,lo8(119)
+ 412 0292 8093 0000 		sts filename+11,r24
+ 413               	.LM102:
+ 414 0296 81E0      		ldi r24,lo8(1)
+ 415 0298 8093 0000 		sts gpsraw_flag,r24
+ 416               	.LM103:
+ 417 029c 0E94 0000 		call new_file
+ 418               	/* epilogue start */
+ 419               	.LM104:
+ 420 02a0 0895      		ret
+ 421               	.LFE2:
+ 423               	.global	gpsraw_flag
+ 424               	.global	gpsraw_flag
+ 425               		.section .bss
+ 428               	gpsraw_flag:
+ 429 0000 00        		.skip 1,0
+ 430               	.global	gps_msg_type
+ 431               		.data
+ 434               	gps_msg_type:
+ 435 0000 4E        		.byte	78
+ 492               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpsraw.c
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:2      *ABS*:0000003f __SREG__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:3      *ABS*:0000003e __SP_H__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:4      *ABS*:0000003d __SP_L__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:5      *ABS*:00000034 __CCP__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:18     .text:00000000 write_gps_msg
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:434    .data:00000000 gps_msg_type
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:209    .text:0000014c write_gps_head
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:428    .bss:00000000 gpsraw_flag
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:282    .text:000001c2 save_position
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:308    .text:000001e0 finish_logfile
+C:\Users\CUI\AppData\Local\Temp/ccwqZAMe.s:369    .text:0000023c new_logfile
+
+UNDEFINED SYMBOLS
+LED_switch
+sd_buff
+gps_date
+gps_time
+gps_state
+gps_lat
+gps_NS
+gps_lon
+gps_EW
+gps_alt
+gps_NoS
+gps_spd
+gps_dir
+sd_buff_len
+write_buff
+filename
+switch_scn_flag
+set_screen
+finish_file
+new_file
+__do_copy_data
+__do_clear_bss

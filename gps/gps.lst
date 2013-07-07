@@ -1,0 +1,443 @@
+   1               		.file	"gps.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	gps_init
+  18               	gps_init:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8FEF      		ldi r24,lo8(-1)
+  25 0002 8093 0000 		sts char_buff,r24
+  26               	.LM3:
+  27 0006 1092 0000 		sts gps_msg_flag,__zero_reg__
+  28               	.LM4:
+  29 000a 1092 0000 		sts gps_msg_ready,__zero_reg__
+  30               	.LM5:
+  31 000e 1092 0000 		sts char_count,__zero_reg__
+  32               	.LM6:
+  33 0012 1092 0000 		sts arg_count,__zero_reg__
+  34               	.LM7:
+  35 0016 1092 0000 		sts arg_char_count,__zero_reg__
+  36               	/* epilogue start */
+  37               	.LM8:
+  38 001a 0895      		ret
+  39               	.LFE2:
+  41               	.global	__vector_13
+  43               	__vector_13:
+  44               	.LFB4:
+  45               	.LM9:
+  46 001c 1F92      		push __zero_reg__
+  47 001e 0F92      		push r0
+  48 0020 0FB6      		in r0,__SREG__
+  49 0022 0F92      		push r0
+  50 0024 1124      		clr __zero_reg__
+  51 0026 2F93      		push r18
+  52 0028 3F93      		push r19
+  53 002a 4F93      		push r20
+  54 002c 5F93      		push r21
+  55 002e 6F93      		push r22
+  56 0030 7F93      		push r23
+  57 0032 8F93      		push r24
+  58 0034 9F93      		push r25
+  59 0036 AF93      		push r26
+  60 0038 BF93      		push r27
+  61 003a EF93      		push r30
+  62 003c FF93      		push r31
+  63               	/* prologue: Signal */
+  64               	/* frame size = 0 */
+  65               	.LM10:
+  66               	/* #APP */
+  67               	 ;  63 "gps/gps.c" 1
+  68 003e F894      		cli
+  69               	 ;  0 "" 2
+  70               	.LM11:
+  71               	/* #NOAPP */
+  72 0040 9CB1      		in r25,44-32
+  73 0042 9093 0000 		sts char_buff,r25
+  74               	.LM12:
+  75 0046 8091 0000 		lds r24,char_count
+  76 004a 8F5F      		subi r24,lo8(-(1))
+  77 004c 8093 0000 		sts char_count,r24
+  78               	.LM13:
+  79 0050 2091 0000 		lds r18,gps_msg_flag
+  80 0054 2223      		tst r18
+  81 0056 01F4      		brne .+2
+  82 0058 00C0      		rjmp .L4
+  83               	.LM14:
+  84 005a 8430      		cpi r24,lo8(4)
+  85 005c 01F4      		brne .L5
+  86               	.LM15:
+  87 005e 9734      		cpi r25,lo8(71)
+  88 0060 01F0      		breq .L7
+  89 0062 9D34      		cpi r25,lo8(77)
+  90 0064 01F4      		brne .L31
+  91 0066 00C0      		rjmp .L35
+  92               	.L7:
+  93               	.LM16:
+  94 0068 82E0      		ldi r24,lo8(2)
+  95 006a 00C0      		rjmp .L34
+  96               	.L35:
+  97               	.LM17:
+  98 006c 83E0      		ldi r24,lo8(3)
+  99               	.L34:
+ 100 006e 8093 0000 		sts gps_msg_flag,r24
+ 101 0072 00C0      		rjmp .L9
+ 102               	.L31:
+ 103               	.LM18:
+ 104 0074 1092 0000 		sts gps_msg_flag,__zero_reg__
+ 105               	.LM19:
+ 106 0078 1092 0000 		sts char_count,__zero_reg__
+ 107               	.LM20:
+ 108 007c 1092 0000 		sts arg_count,__zero_reg__
+ 109 0080 00C0      		rjmp .L9
+ 110               	.L5:
+ 111               	.LM21:
+ 112 0082 9C32      		cpi r25,lo8(44)
+ 113 0084 01F4      		brne .L10
+ 114               	.LM22:
+ 115 0086 8091 0000 		lds r24,arg_count
+ 116 008a 8F5F      		subi r24,lo8(-(1))
+ 117 008c 8093 0000 		sts arg_count,r24
+ 118               	.LM23:
+ 119 0090 1092 0000 		sts arg_char_count,__zero_reg__
+ 120 0094 00C0      		rjmp .L9
+ 121               	.L10:
+ 122               	.LM24:
+ 123 0096 9A30      		cpi r25,lo8(10)
+ 124 0098 01F0      		breq .L11
+ 125 009a 9D30      		cpi r25,lo8(13)
+ 126 009c 01F4      		brne .L12
+ 127               	.L11:
+ 128               	.LM25:
+ 129 009e 1092 0000 		sts char_count,__zero_reg__
+ 130               	.LM26:
+ 131 00a2 2330      		cpi r18,lo8(3)
+ 132 00a4 01F4      		brne .L13
+ 133               	.LM27:
+ 134 00a6 81E0      		ldi r24,lo8(1)
+ 135 00a8 8093 0000 		sts gps_msg_ready,r24
+ 136               	.L13:
+ 137               	.LM28:
+ 138 00ac 87E0      		ldi r24,lo8(7)
+ 139 00ae 0E94 0000 		call LED_off
+ 140               	.LM29:
+ 141 00b2 1092 0000 		sts gps_msg_flag,__zero_reg__
+ 142 00b6 00C0      		rjmp .L9
+ 143               	.L12:
+ 144               	.LM30:
+ 145 00b8 2230      		cpi r18,lo8(2)
+ 146 00ba 01F4      		brne .L14
+ 147               	.LM31:
+ 148 00bc 8091 0000 		lds r24,arg_count
+ 149 00c0 8730      		cpi r24,lo8(7)
+ 150 00c2 01F0      		breq .L16
+ 151 00c4 8930      		cpi r24,lo8(9)
+ 152 00c6 01F0      		breq .+2
+ 153 00c8 00C0      		rjmp .L18
+ 154 00ca 00C0      		rjmp .L36
+ 155               	.L16:
+ 156               	.LM32:
+ 157 00cc E091 0000 		lds r30,arg_char_count
+ 158 00d0 F0E0      		ldi r31,lo8(0)
+ 159 00d2 E050      		subi r30,lo8(-(gps_NoS))
+ 160 00d4 F040      		sbci r31,hi8(-(gps_NoS))
+ 161 00d6 00C0      		rjmp .L33
+ 162               	.L36:
+ 163               	.LM33:
+ 164 00d8 E091 0000 		lds r30,arg_char_count
+ 165 00dc F0E0      		ldi r31,lo8(0)
+ 166 00de E050      		subi r30,lo8(-(gps_alt))
+ 167 00e0 F040      		sbci r31,hi8(-(gps_alt))
+ 168 00e2 00C0      		rjmp .L33
+ 169               	.L14:
+ 170               	.LM34:
+ 171 00e4 2330      		cpi r18,lo8(3)
+ 172 00e6 01F0      		breq .+2
+ 173 00e8 00C0      		rjmp .L9
+ 174               	.LM35:
+ 175 00ea 8091 0000 		lds r24,arg_count
+ 176 00ee 8530      		cpi r24,lo8(5)
+ 177 00f0 01F0      		breq .L23
+ 178 00f2 8630      		cpi r24,lo8(6)
+ 179 00f4 00F4      		brsh .L28
+ 180 00f6 8230      		cpi r24,lo8(2)
+ 181 00f8 01F0      		breq .L20
+ 182 00fa 8330      		cpi r24,lo8(3)
+ 183 00fc 00F4      		brsh .L29
+ 184 00fe 8130      		cpi r24,lo8(1)
+ 185 0100 01F4      		brne .L18
+ 186 0102 00C0      		rjmp .L37
+ 187               	.L29:
+ 188 0104 8330      		cpi r24,lo8(3)
+ 189 0106 01F0      		breq .L21
+ 190 0108 8430      		cpi r24,lo8(4)
+ 191 010a 01F4      		brne .L18
+ 192 010c 00C0      		rjmp .L38
+ 193               	.L28:
+ 194 010e 8730      		cpi r24,lo8(7)
+ 195 0110 01F0      		breq .L25
+ 196 0112 8730      		cpi r24,lo8(7)
+ 197 0114 00F0      		brlo .L24
+ 198 0116 8830      		cpi r24,lo8(8)
+ 199 0118 01F0      		breq .L26
+ 200 011a 8930      		cpi r24,lo8(9)
+ 201 011c 01F4      		brne .L18
+ 202 011e 00C0      		rjmp .L39
+ 203               	.L37:
+ 204               	.LM36:
+ 205 0120 E091 0000 		lds r30,arg_char_count
+ 206 0124 F0E0      		ldi r31,lo8(0)
+ 207 0126 E050      		subi r30,lo8(-(gps_time))
+ 208 0128 F040      		sbci r31,hi8(-(gps_time))
+ 209 012a 00C0      		rjmp .L33
+ 210               	.L20:
+ 211               	.LM37:
+ 212 012c 9093 0000 		sts gps_state,r25
+ 213 0130 00C0      		rjmp .L18
+ 214               	.L21:
+ 215               	.LM38:
+ 216 0132 E091 0000 		lds r30,arg_char_count
+ 217 0136 F0E0      		ldi r31,lo8(0)
+ 218 0138 E050      		subi r30,lo8(-(gps_lat))
+ 219 013a F040      		sbci r31,hi8(-(gps_lat))
+ 220 013c 00C0      		rjmp .L33
+ 221               	.L38:
+ 222               	.LM39:
+ 223 013e 9093 0000 		sts gps_NS,r25
+ 224 0142 00C0      		rjmp .L18
+ 225               	.L23:
+ 226               	.LM40:
+ 227 0144 E091 0000 		lds r30,arg_char_count
+ 228 0148 F0E0      		ldi r31,lo8(0)
+ 229 014a E050      		subi r30,lo8(-(gps_lon))
+ 230 014c F040      		sbci r31,hi8(-(gps_lon))
+ 231 014e 00C0      		rjmp .L33
+ 232               	.L24:
+ 233               	.LM41:
+ 234 0150 9093 0000 		sts gps_EW,r25
+ 235 0154 00C0      		rjmp .L18
+ 236               	.L25:
+ 237               	.LM42:
+ 238 0156 E091 0000 		lds r30,arg_char_count
+ 239 015a F0E0      		ldi r31,lo8(0)
+ 240 015c E050      		subi r30,lo8(-(gps_spd))
+ 241 015e F040      		sbci r31,hi8(-(gps_spd))
+ 242 0160 00C0      		rjmp .L33
+ 243               	.L26:
+ 244               	.LM43:
+ 245 0162 E091 0000 		lds r30,arg_char_count
+ 246 0166 F0E0      		ldi r31,lo8(0)
+ 247 0168 E050      		subi r30,lo8(-(gps_dir))
+ 248 016a F040      		sbci r31,hi8(-(gps_dir))
+ 249 016c 00C0      		rjmp .L33
+ 250               	.L39:
+ 251               	.LM44:
+ 252 016e E091 0000 		lds r30,arg_char_count
+ 253 0172 F0E0      		ldi r31,lo8(0)
+ 254 0174 E050      		subi r30,lo8(-(gps_date))
+ 255 0176 F040      		sbci r31,hi8(-(gps_date))
+ 256               	.L33:
+ 257 0178 9083      		st Z,r25
+ 258               	.L18:
+ 259               	.LM45:
+ 260 017a 8091 0000 		lds r24,arg_char_count
+ 261 017e 8F5F      		subi r24,lo8(-(1))
+ 262 0180 8093 0000 		sts arg_char_count,r24
+ 263 0184 00C0      		rjmp .L9
+ 264               	.L4:
+ 265               	.LM46:
+ 266 0186 9432      		cpi r25,lo8(36)
+ 267 0188 01F4      		brne .L9
+ 268               	.LM47:
+ 269 018a 81E0      		ldi r24,lo8(1)
+ 270 018c 8093 0000 		sts gps_msg_flag,r24
+ 271               	.LM48:
+ 272 0190 1092 0000 		sts arg_count,__zero_reg__
+ 273               	.LM49:
+ 274 0194 1092 0000 		sts char_count,__zero_reg__
+ 275               	.LM50:
+ 276 0198 87E0      		ldi r24,lo8(7)
+ 277 019a 0E94 0000 		call LED_on
+ 278               	.L9:
+ 279               	.LM51:
+ 280               	/* #APP */
+ 281               	 ;  172 "gps/gps.c" 1
+ 282 019e 7894      		sei
+ 283               	 ;  0 "" 2
+ 284               	/* epilogue start */
+ 285               	.LM52:
+ 286               	/* #NOAPP */
+ 287 01a0 FF91      		pop r31
+ 288 01a2 EF91      		pop r30
+ 289 01a4 BF91      		pop r27
+ 290 01a6 AF91      		pop r26
+ 291 01a8 9F91      		pop r25
+ 292 01aa 8F91      		pop r24
+ 293 01ac 7F91      		pop r23
+ 294 01ae 6F91      		pop r22
+ 295 01b0 5F91      		pop r21
+ 296 01b2 4F91      		pop r20
+ 297 01b4 3F91      		pop r19
+ 298 01b6 2F91      		pop r18
+ 299 01b8 0F90      		pop r0
+ 300 01ba 0FBE      		out __SREG__,r0
+ 301 01bc 0F90      		pop r0
+ 302 01be 1F90      		pop __zero_reg__
+ 303 01c0 1895      		reti
+ 304               	.LFE4:
+ 306               	.global	gps_set_arg
+ 308               	gps_set_arg:
+ 309               	.LFB3:
+ 310               	.LM53:
+ 311               	/* prologue: function */
+ 312               	/* frame size = 0 */
+ 313               	.LM54:
+ 314 01c2 80E0      		ldi r24,lo8(__c.1508)
+ 315 01c4 90E0      		ldi r25,hi8(__c.1508)
+ 316 01c6 0E94 0000 		call uart_puts_p
+ 317               	.LM55:
+ 318 01ca 8DE0      		ldi r24,lo8(13)
+ 319 01cc 0E94 0000 		call uart_putc
+ 320               	.LM56:
+ 321 01d0 8AE0      		ldi r24,lo8(10)
+ 322 01d2 0E94 0000 		call uart_putc
+ 323               	.LM57:
+ 324 01d6 80E0      		ldi r24,lo8(__c.1510)
+ 325 01d8 90E0      		ldi r25,hi8(__c.1510)
+ 326 01da 0E94 0000 		call uart_puts_p
+ 327               	.LM58:
+ 328 01de 8DE0      		ldi r24,lo8(13)
+ 329 01e0 0E94 0000 		call uart_putc
+ 330               	.LM59:
+ 331 01e4 8AE0      		ldi r24,lo8(10)
+ 332 01e6 0E94 0000 		call uart_putc
+ 333               	.LM60:
+ 334 01ea 80E0      		ldi r24,lo8(__c.1512)
+ 335 01ec 90E0      		ldi r25,hi8(__c.1512)
+ 336 01ee 0E94 0000 		call uart_puts_p
+ 337               	.LM61:
+ 338 01f2 8DE0      		ldi r24,lo8(13)
+ 339 01f4 0E94 0000 		call uart_putc
+ 340               	.LM62:
+ 341 01f8 8AE0      		ldi r24,lo8(10)
+ 342 01fa 0E94 0000 		call uart_putc
+ 343               	/* epilogue start */
+ 344               	.LM63:
+ 345 01fe 0895      		ret
+ 346               	.LFE3:
+ 348               	.global	gps_time
+ 349               		.data
+ 352               	gps_time:
+ 353 0000 7469 6D30 		.string	"tim000.000"
+ 353      3030 2E30 
+ 353      3030 00
+ 354               	.global	gps_date
+ 357               	gps_date:
+ 358 000b 6461 7430 		.string	"dat0000"
+ 358      3030 3000 
+ 359               	.global	gps_state
+ 362               	gps_state:
+ 363 0013 73        		.byte	115
+ 364               	.global	gps_lat
+ 367               	gps_lat:
+ 368 0014 6C61 7430 		.string	"lat0.0000"
+ 368      2E30 3030 
+ 368      3000 
+ 369               	.global	gps_NS
+ 372               	gps_NS:
+ 373 001e 6E        		.byte	110
+ 374               	.global	gps_lon
+ 377               	gps_lon:
+ 378 001f 6C6F 6E30 		.string	"lon00.0000"
+ 378      302E 3030 
+ 378      3030 00
+ 379               	.global	gps_EW
+ 382               	gps_EW:
+ 383 002a 65        		.byte	101
+ 384               	.global	gps_alt
+ 387               	gps_alt:
+ 388 002b 616C 7430 		.string	"alt00"
+ 388      3000 
+ 389               	.global	gps_NoS
+ 392               	gps_NoS:
+ 393 0031 6E30 00   		.string	"n0"
+ 394               	.global	gps_spd
+ 397               	gps_spd:
+ 398 0034 7370 6430 		.string	"spd00"
+ 398      3000 
+ 399               	.global	gps_dir
+ 402               	gps_dir:
+ 403 003a 6469 7230 		.string	"dir000"
+ 403      3030 00
+ 404               		.section	.progmem.data,"a",@progbits
+ 407               	__c.1512:
+ 408 0000 2450 5352 		.string	"$PSRF103,05,00,01,01*20"
+ 408      4631 3033 
+ 408      2C30 352C 
+ 408      3030 2C30 
+ 408      312C 3031 
+ 411               	__c.1510:
+ 412 0018 2450 5352 		.string	"$PSRF103,03,00,00,01*27"
+ 412      4631 3033 
+ 412      2C30 332C 
+ 412      3030 2C30 
+ 412      302C 3031 
+ 415               	__c.1508:
+ 416 0030 2450 5352 		.string	"$PSRF103,02,00,00,01*26"
+ 416      4631 3033 
+ 416      2C30 322C 
+ 416      3030 2C30 
+ 416      302C 3031 
+ 417               		.lcomm gps_msg_flag,1
+ 418               		.lcomm char_buff,1
+ 419               		.lcomm char_count,1
+ 420               		.lcomm arg_count,1
+ 421               		.lcomm arg_char_count,1
+ 422               		.comm gps_msg_ready,1,1
+ 463               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 gps.c
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:2      *ABS*:0000003f __SREG__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:3      *ABS*:0000003e __SP_H__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:4      *ABS*:0000003d __SP_L__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:5      *ABS*:00000034 __CCP__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:18     .text:00000000 gps_init
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:417    .bss:00000001 char_buff
+                             .bss:00000000 gps_msg_flag
+                            *COM*:00000001 gps_msg_ready
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:418    .bss:00000002 char_count
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:419    .bss:00000003 arg_count
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:420    .bss:00000004 arg_char_count
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:43     .text:0000001c __vector_13
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:392    .data:00000031 gps_NoS
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:387    .data:0000002b gps_alt
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:352    .data:00000000 gps_time
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:362    .data:00000013 gps_state
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:367    .data:00000014 gps_lat
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:372    .data:0000001e gps_NS
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:377    .data:0000001f gps_lon
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:382    .data:0000002a gps_EW
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:397    .data:00000034 gps_spd
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:402    .data:0000003a gps_dir
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:357    .data:0000000b gps_date
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:308    .text:000001c2 gps_set_arg
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:415    .progmem.data:00000030 __c.1508
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:411    .progmem.data:00000018 __c.1510
+C:\Users\CUI\AppData\Local\Temp/cc1qJTf8.s:407    .progmem.data:00000000 __c.1512
+
+UNDEFINED SYMBOLS
+LED_off
+LED_on
+uart_puts_p
+uart_putc
+__do_copy_data
+__do_clear_bss

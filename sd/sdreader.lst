@@ -1,0 +1,295 @@
+   1               		.file	"sdreader.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	write_buff
+  18               	write_buff:
+  19               	.LFB5:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 4091 0000 		lds r20,sd_buff_len
+  25 0004 8091 0000 		lds r24,fd
+  26 0008 9091 0000 		lds r25,(fd)+1
+  27 000c 60E0      		ldi r22,lo8(sd_buff)
+  28 000e 70E0      		ldi r23,hi8(sd_buff)
+  29 0010 50E0      		ldi r21,lo8(0)
+  30 0012 0E94 0000 		call fat16_write_file
+  31 0016 2091 0000 		lds r18,sd_buff_len
+  32 001a 30E0      		ldi r19,lo8(0)
+  33 001c 8217      		cp r24,r18
+  34 001e 9307      		cpc r25,r19
+  35 0020 01F0      		breq .L2
+  36 0022 81E0      		ldi r24,lo8(1)
+  37 0024 0895      		ret
+  38               	.L2:
+  39               	.LM3:
+  40 0026 0E94 0000 		call sd_raw_sync
+  41 002a 8823      		tst r24
+  42 002c 01F0      		breq .L4
+  43 002e 80E0      		ldi r24,lo8(0)
+  44 0030 0895      		ret
+  45               	.L4:
+  46 0032 82E0      		ldi r24,lo8(2)
+  47               	.LM4:
+  48 0034 0895      		ret
+  49               	.LFE5:
+  51               	.global	finish_file
+  53               	finish_file:
+  54               	.LFB4:
+  55               	.LM5:
+  56               	/* prologue: function */
+  57               	/* frame size = 0 */
+  58               	.LM6:
+  59 0036 8091 0000 		lds r24,fd
+  60 003a 9091 0000 		lds r25,(fd)+1
+  61 003e 0E94 0000 		call fat16_close_file
+  62               	.LM7:
+  63 0042 80E0      		ldi r24,lo8(0)
+  64               	/* epilogue start */
+  65 0044 0895      		ret
+  66               	.LFE4:
+  68               	.global	new_file
+  70               	new_file:
+  71               	.LFB3:
+  72               	.LM8:
+  73               	/* prologue: function */
+  74               	/* frame size = 0 */
+  75               	.LM9:
+  76 0046 8AE1      		ldi r24,lo8(26)
+  77 0048 8093 0000 		sts retry,r24
+  78 004c 00C0      		rjmp .L9
+  79               	.L11:
+  80               	.LM10:
+  81 004e 8091 0000 		lds r24,retry
+  82 0052 8150      		subi r24,lo8(-(-1))
+  83 0054 8093 0000 		sts retry,r24
+  84               	.LM11:
+  85 0058 8091 0000 		lds r24,filename+7
+  86 005c 8F5F      		subi r24,lo8(-(1))
+  87 005e 8093 0000 		sts filename+7,r24
+  88               	.L9:
+  89               	.LM12:
+  90 0062 8091 0000 		lds r24,retry
+  91 0066 8823      		tst r24
+  92 0068 01F0      		breq .L10
+  93 006a 8091 0000 		lds r24,dd
+  94 006e 9091 0000 		lds r25,(dd)+1
+  95 0072 60E0      		ldi r22,lo8(filename)
+  96 0074 70E0      		ldi r23,hi8(filename)
+  97 0076 40E0      		ldi r20,lo8(logfile_entry)
+  98 0078 50E0      		ldi r21,hi8(logfile_entry)
+  99 007a 0E94 0000 		call fat16_create_file
+ 100 007e 8823      		tst r24
+ 101 0080 01F0      		breq .L11
+ 102               	.L10:
+ 103               	.LM13:
+ 104 0082 8091 0000 		lds r24,retry
+ 105 0086 8823      		tst r24
+ 106 0088 01F4      		brne .L12
+ 107 008a 81E0      		ldi r24,lo8(1)
+ 108 008c 0895      		ret
+ 109               	.L12:
+ 110               	.LM14:
+ 111 008e 8AE0      		ldi r24,lo8(10)
+ 112 0090 8093 0000 		sts retry,r24
+ 113               	.LM15:
+ 114 0094 8091 0000 		lds r24,fs
+ 115 0098 9091 0000 		lds r25,(fs)+1
+ 116 009c 60E0      		ldi r22,lo8(logfile_entry)
+ 117 009e 70E0      		ldi r23,hi8(logfile_entry)
+ 118 00a0 0E94 0000 		call fat16_open_file
+ 119 00a4 9093 0000 		sts (fd)+1,r25
+ 120 00a8 8093 0000 		sts fd,r24
+ 121               	.LM16:
+ 122 00ac 892B      		or r24,r25
+ 123 00ae 01F0      		breq .L14
+ 124 00b0 80E0      		ldi r24,lo8(0)
+ 125 00b2 0895      		ret
+ 126               	.L14:
+ 127 00b4 82E0      		ldi r24,lo8(2)
+ 128               	.LM17:
+ 129 00b6 0895      		ret
+ 130               	.LFE3:
+ 132               	.global	sdreader_init
+ 134               	sdreader_init:
+ 135               	.LFB2:
+ 136               	.LM18:
+ 137 00b8 0F93      		push r16
+ 138               	/* prologue: function */
+ 139               	/* frame size = 0 */
+ 140               	.LM19:
+ 141 00ba 85E0      		ldi r24,lo8(5)
+ 142 00bc 00C0      		rjmp .L26
+ 143               	.L19:
+ 144               	.LM20:
+ 145 00be 8150      		subi r24,lo8(-(-1))
+ 146               	.L26:
+ 147 00c0 8093 0000 		sts retry,r24
+ 148               	.LM21:
+ 149 00c4 0E94 0000 		call sd_raw_init
+ 150 00c8 8823      		tst r24
+ 151 00ca 01F4      		brne .L18
+ 152 00cc 8091 0000 		lds r24,retry
+ 153 00d0 8823      		tst r24
+ 154 00d2 01F4      		brne .L19
+ 155               	.L18:
+ 156               	.LM22:
+ 157 00d4 8091 0000 		lds r24,retry
+ 158 00d8 8823      		tst r24
+ 159 00da 01F4      		brne .L20
+ 160 00dc 81E0      		ldi r24,lo8(1)
+ 161 00de 00C0      		rjmp .L21
+ 162               	.L20:
+ 163               	.LM23:
+ 164 00e0 85E0      		ldi r24,lo8(5)
+ 165 00e2 8093 0000 		sts retry,r24
+ 166               	.LM24:
+ 167 00e6 80E0      		ldi r24,lo8(gs(sd_raw_read))
+ 168 00e8 90E0      		ldi r25,hi8(gs(sd_raw_read))
+ 169 00ea 60E0      		ldi r22,lo8(gs(sd_raw_read_interval))
+ 170 00ec 70E0      		ldi r23,hi8(gs(sd_raw_read_interval))
+ 171 00ee 40E0      		ldi r20,lo8(gs(sd_raw_write))
+ 172 00f0 50E0      		ldi r21,hi8(gs(sd_raw_write))
+ 173 00f2 20E0      		ldi r18,lo8(gs(sd_raw_write_interval))
+ 174 00f4 30E0      		ldi r19,hi8(gs(sd_raw_write_interval))
+ 175 00f6 00E0      		ldi r16,lo8(0)
+ 176 00f8 0E94 0000 		call partition_open
+ 177 00fc 9093 0000 		sts (partition)+1,r25
+ 178 0100 8093 0000 		sts partition,r24
+ 179               	.LM25:
+ 180 0104 892B      		or r24,r25
+ 181 0106 01F4      		brne .L22
+ 182               	.LM26:
+ 183 0108 80E0      		ldi r24,lo8(gs(sd_raw_read))
+ 184 010a 90E0      		ldi r25,hi8(gs(sd_raw_read))
+ 185 010c 60E0      		ldi r22,lo8(gs(sd_raw_read_interval))
+ 186 010e 70E0      		ldi r23,hi8(gs(sd_raw_read_interval))
+ 187 0110 40E0      		ldi r20,lo8(gs(sd_raw_write))
+ 188 0112 50E0      		ldi r21,hi8(gs(sd_raw_write))
+ 189 0114 20E0      		ldi r18,lo8(gs(sd_raw_write_interval))
+ 190 0116 30E0      		ldi r19,hi8(gs(sd_raw_write_interval))
+ 191 0118 0FEF      		ldi r16,lo8(-1)
+ 192 011a 0E94 0000 		call partition_open
+ 193 011e 9093 0000 		sts (partition)+1,r25
+ 194 0122 8093 0000 		sts partition,r24
+ 195               	.LM27:
+ 196 0126 892B      		or r24,r25
+ 197 0128 01F4      		brne .L22
+ 198 012a 82E0      		ldi r24,lo8(2)
+ 199 012c 00C0      		rjmp .L21
+ 200               	.L22:
+ 201               	.LM28:
+ 202 012e 8091 0000 		lds r24,partition
+ 203 0132 9091 0000 		lds r25,(partition)+1
+ 204 0136 0E94 0000 		call fat16_open
+ 205 013a 9093 0000 		sts (fs)+1,r25
+ 206 013e 8093 0000 		sts fs,r24
+ 207               	.LM29:
+ 208 0142 0097      		sbiw r24,0
+ 209 0144 01F4      		brne .L23
+ 210 0146 83E0      		ldi r24,lo8(3)
+ 211 0148 00C0      		rjmp .L21
+ 212               	.L23:
+ 213               	.LM30:
+ 214 014a 60E0      		ldi r22,lo8(rd)
+ 215 014c 70E0      		ldi r23,hi8(rd)
+ 216 014e 0E94 0000 		call fat16_get_root_dir_entry
+ 217               	.LM31:
+ 218 0152 8091 0000 		lds r24,fs
+ 219 0156 9091 0000 		lds r25,(fs)+1
+ 220 015a 60E0      		ldi r22,lo8(rd)
+ 221 015c 70E0      		ldi r23,hi8(rd)
+ 222 015e 0E94 0000 		call fat16_open_dir
+ 223 0162 9093 0000 		sts (dd)+1,r25
+ 224 0166 8093 0000 		sts dd,r24
+ 225               	.LM32:
+ 226 016a 892B      		or r24,r25
+ 227 016c 01F0      		breq .L24
+ 228 016e 80E0      		ldi r24,lo8(0)
+ 229 0170 00C0      		rjmp .L21
+ 230               	.L24:
+ 231 0172 84E0      		ldi r24,lo8(4)
+ 232               	.L21:
+ 233               	/* epilogue start */
+ 234               	.LM33:
+ 235 0174 0F91      		pop r16
+ 236 0176 0895      		ret
+ 237               	.LFE2:
+ 239               	.global	filename
+ 240               		.data
+ 243               	filename:
+ 244 0000 3030 3030 		.string	"00000000.000"
+ 244      3030 3030 
+ 244      2E30 3030 
+ 244      00
+ 245               	.global	sd_buff
+ 248               	sd_buff:
+ 249 000d 3132 3334 		.ascii	"123456789_123456789_123456789_123456"
+ 249      3536 3738 
+ 249      395F 3132 
+ 249      3334 3536 
+ 249      3738 395F 
+ 250 0031 3738 395F 		.string	"789_123456789_123456789_123456789_123456789_123456789_123456789_"
+ 250      3132 3334 
+ 250      3536 3738 
+ 250      395F 3132 
+ 250      3334 3536 
+ 251               	.global	sd_buff_len
+ 252               	.global	sd_buff_len
+ 253               		.section .bss
+ 256               	sd_buff_len:
+ 257 0000 00        		.skip 1,0
+ 258               		.lcomm partition,2
+ 259               		.lcomm fs,2
+ 260               		.lcomm rd,43
+ 261               		.lcomm dd,2
+ 262               		.lcomm fd,2
+ 263               		.comm retry,1,1
+ 264               		.comm logfile_entry,43,1
+ 313               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 sdreader.c
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:2      *ABS*:0000003f __SREG__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:3      *ABS*:0000003e __SP_H__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:4      *ABS*:0000003d __SP_L__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:5      *ABS*:00000034 __CCP__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:18     .text:00000000 write_buff
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:256    .bss:00000000 sd_buff_len
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:261    .bss:00000032 fd
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:248    .data:0000000d sd_buff
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:53     .text:00000036 finish_file
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:70     .text:00000046 new_file
+                            *COM*:00000001 retry
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:243    .data:00000000 filename
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:260    .bss:00000030 dd
+                            *COM*:0000002b logfile_entry
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:258    .bss:00000003 fs
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:134    .text:000000b8 sdreader_init
+                             .bss:00000001 partition
+C:\Users\CUI\AppData\Local\Temp/ccBb7ZqQ.s:259    .bss:00000005 rd
+
+UNDEFINED SYMBOLS
+fat16_write_file
+sd_raw_sync
+fat16_close_file
+fat16_create_file
+fat16_open_file
+sd_raw_init
+sd_raw_read
+sd_raw_read_interval
+sd_raw_write
+sd_raw_write_interval
+partition_open
+fat16_open
+fat16_get_root_dir_entry
+fat16_open_dir
+__do_copy_data
+__do_clear_bss

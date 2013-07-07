@@ -1,0 +1,350 @@
+   1               		.file	"timer.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	timer0_init
+  18               	timer0_init:
+  19               	.LFB2:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 1092 0000 		sts time_0,__zero_reg__
+  25 0004 1092 0000 		sts (time_0)+1,__zero_reg__
+  26 0008 1092 0000 		sts (time_0)+2,__zero_reg__
+  27 000c 1092 0000 		sts (time_0)+3,__zero_reg__
+  28               	.LM3:
+  29 0010 13BE      		out 83-32,__zero_reg__
+  30               	.LM4:
+  31 0012 80E8      		ldi r24,lo8(-128)
+  32 0014 82BF      		out 82-32,r24
+  33               	.LM5:
+  34 0016 89B7      		in r24,89-32
+  35 0018 8160      		ori r24,lo8(1)
+  36 001a 89BF      		out 89-32,r24
+  37               	/* epilogue start */
+  38               	.LM6:
+  39 001c 0895      		ret
+  40               	.LFE2:
+  42               	.global	timer0_start
+  44               	timer0_start:
+  45               	.LFB3:
+  46               	.LM7:
+  47               	/* prologue: function */
+  48               	/* frame size = 0 */
+  49               	.LM8:
+  50 001e 83E0      		ldi r24,lo8(3)
+  51 0020 83BF      		out 83-32,r24
+  52               	/* epilogue start */
+  53               	.LM9:
+  54 0022 0895      		ret
+  55               	.LFE3:
+  57               	.global	timer0_stop
+  59               	timer0_stop:
+  60               	.LFB4:
+  61               	.LM10:
+  62               	/* prologue: function */
+  63               	/* frame size = 0 */
+  64               	.LM11:
+  65 0024 13BE      		out 83-32,__zero_reg__
+  66               	/* epilogue start */
+  67               	.LM12:
+  68 0026 0895      		ret
+  69               	.LFE4:
+  71               	.global	timer0_reset
+  73               	timer0_reset:
+  74               	.LFB5:
+  75               	.LM13:
+  76               	/* prologue: function */
+  77               	/* frame size = 0 */
+  78               	.LM14:
+  79 0028 80E8      		ldi r24,lo8(-128)
+  80 002a 82BF      		out 82-32,r24
+  81               	/* epilogue start */
+  82               	.LM15:
+  83 002c 0895      		ret
+  84               	.LFE5:
+  86               	.global	timer1_init
+  88               	timer1_init:
+  89               	.LFB6:
+  90               	.LM16:
+  91               	/* prologue: function */
+  92               	/* frame size = 0 */
+  93               	.LM17:
+  94 002e 1092 0000 		sts time_1,__zero_reg__
+  95 0032 1092 0000 		sts (time_1)+1,__zero_reg__
+  96 0036 1092 0000 		sts (time_1)+2,__zero_reg__
+  97 003a 1092 0000 		sts (time_1)+3,__zero_reg__
+  98               	.LM18:
+  99 003e 1FBC      		out 79-32,__zero_reg__
+ 100               	.LM19:
+ 101 0040 1EBC      		out 78-32,__zero_reg__
+ 102               	.LM20:
+ 103 0042 87E6      		ldi r24,lo8(103)
+ 104 0044 8DBD      		out 77-32,r24
+ 105               	.LM21:
+ 106 0046 8BE6      		ldi r24,lo8(107)
+ 107 0048 8CBD      		out 76-32,r24
+ 108               	.LM22:
+ 109 004a 89B7      		in r24,89-32
+ 110 004c 8460      		ori r24,lo8(4)
+ 111 004e 89BF      		out 89-32,r24
+ 112               	/* epilogue start */
+ 113               	.LM23:
+ 114 0050 0895      		ret
+ 115               	.LFE6:
+ 117               	.global	timer1_start
+ 119               	timer1_start:
+ 120               	.LFB7:
+ 121               	.LM24:
+ 122               	/* prologue: function */
+ 123               	/* frame size = 0 */
+ 124               	.LM25:
+ 125 0052 1FBC      		out 79-32,__zero_reg__
+ 126               	.LM26:
+ 127 0054 85E0      		ldi r24,lo8(5)
+ 128 0056 8EBD      		out 78-32,r24
+ 129               	/* epilogue start */
+ 130               	.LM27:
+ 131 0058 0895      		ret
+ 132               	.LFE7:
+ 134               	.global	timer1_stop
+ 136               	timer1_stop:
+ 137               	.LFB8:
+ 138               	.LM28:
+ 139               	/* prologue: function */
+ 140               	/* frame size = 0 */
+ 141               	.LM29:
+ 142 005a 1FBC      		out 79-32,__zero_reg__
+ 143               	.LM30:
+ 144 005c 1EBC      		out 78-32,__zero_reg__
+ 145               	/* epilogue start */
+ 146               	.LM31:
+ 147 005e 0895      		ret
+ 148               	.LFE8:
+ 150               	.global	timer1_reset
+ 152               	timer1_reset:
+ 153               	.LFB9:
+ 154               	.LM32:
+ 155               	/* prologue: function */
+ 156               	/* frame size = 0 */
+ 157               	.LM33:
+ 158 0060 87E6      		ldi r24,lo8(103)
+ 159 0062 8DBD      		out 77-32,r24
+ 160               	.LM34:
+ 161 0064 8BE6      		ldi r24,lo8(107)
+ 162 0066 8CBD      		out 76-32,r24
+ 163               	/* epilogue start */
+ 164               	.LM35:
+ 165 0068 0895      		ret
+ 166               	.LFE9:
+ 168               	.global	__vector_9
+ 170               	__vector_9:
+ 171               	.LFB11:
+ 172               	.LM36:
+ 173 006a 1F92      		push __zero_reg__
+ 174 006c 0F92      		push r0
+ 175 006e 0FB6      		in r0,__SREG__
+ 176 0070 0F92      		push r0
+ 177 0072 1124      		clr __zero_reg__
+ 178 0074 2F93      		push r18
+ 179 0076 3F93      		push r19
+ 180 0078 4F93      		push r20
+ 181 007a 5F93      		push r21
+ 182 007c 6F93      		push r22
+ 183 007e 7F93      		push r23
+ 184 0080 8F93      		push r24
+ 185 0082 9F93      		push r25
+ 186 0084 AF93      		push r26
+ 187 0086 BF93      		push r27
+ 188 0088 EF93      		push r30
+ 189 008a FF93      		push r31
+ 190               	/* prologue: Signal */
+ 191               	/* frame size = 0 */
+ 192               	.LM37:
+ 193               	/* #APP */
+ 194               	 ;  104 "timer/timer.c" 1
+ 195 008c F894      		cli
+ 196               	 ;  0 "" 2
+ 197               	/* #NOAPP */
+ 198               	.LBB6:
+ 199               	.LBB7:
+ 200               	.LM38:
+ 201 008e 87E6      		ldi r24,lo8(103)
+ 202 0090 8DBD      		out 77-32,r24
+ 203               	.LM39:
+ 204 0092 8BE6      		ldi r24,lo8(107)
+ 205 0094 8CBD      		out 76-32,r24
+ 206               	.LBE7:
+ 207               	.LBE6:
+ 208               	.LM40:
+ 209 0096 8091 0000 		lds r24,time_1
+ 210 009a 9091 0000 		lds r25,(time_1)+1
+ 211 009e A091 0000 		lds r26,(time_1)+2
+ 212 00a2 B091 0000 		lds r27,(time_1)+3
+ 213 00a6 0196      		adiw r24,1
+ 214 00a8 A11D      		adc r26,__zero_reg__
+ 215 00aa B11D      		adc r27,__zero_reg__
+ 216 00ac 8093 0000 		sts time_1,r24
+ 217 00b0 9093 0000 		sts (time_1)+1,r25
+ 218 00b4 A093 0000 		sts (time_1)+2,r26
+ 219 00b8 B093 0000 		sts (time_1)+3,r27
+ 220               	.LM41:
+ 221 00bc 81E0      		ldi r24,lo8(1)
+ 222 00be 8093 0000 		sts timer1_flag,r24
+ 223               	.LM42:
+ 224 00c2 0E94 0000 		call LED_switch
+ 225               	.LM43:
+ 226               	/* #APP */
+ 227               	 ;  112 "timer/timer.c" 1
+ 228 00c6 7894      		sei
+ 229               	 ;  0 "" 2
+ 230               	/* epilogue start */
+ 231               	.LM44:
+ 232               	/* #NOAPP */
+ 233 00c8 FF91      		pop r31
+ 234 00ca EF91      		pop r30
+ 235 00cc BF91      		pop r27
+ 236 00ce AF91      		pop r26
+ 237 00d0 9F91      		pop r25
+ 238 00d2 8F91      		pop r24
+ 239 00d4 7F91      		pop r23
+ 240 00d6 6F91      		pop r22
+ 241 00d8 5F91      		pop r21
+ 242 00da 4F91      		pop r20
+ 243 00dc 3F91      		pop r19
+ 244 00de 2F91      		pop r18
+ 245 00e0 0F90      		pop r0
+ 246 00e2 0FBE      		out __SREG__,r0
+ 247 00e4 0F90      		pop r0
+ 248 00e6 1F90      		pop __zero_reg__
+ 249 00e8 1895      		reti
+ 250               	.LFE11:
+ 252               	.global	__vector_11
+ 254               	__vector_11:
+ 255               	.LFB10:
+ 256               	.LM45:
+ 257 00ea 1F92      		push __zero_reg__
+ 258 00ec 0F92      		push r0
+ 259 00ee 0FB6      		in r0,__SREG__
+ 260 00f0 0F92      		push r0
+ 261 00f2 1124      		clr __zero_reg__
+ 262 00f4 2F93      		push r18
+ 263 00f6 3F93      		push r19
+ 264 00f8 4F93      		push r20
+ 265 00fa 5F93      		push r21
+ 266 00fc 6F93      		push r22
+ 267 00fe 7F93      		push r23
+ 268 0100 8F93      		push r24
+ 269 0102 9F93      		push r25
+ 270 0104 AF93      		push r26
+ 271 0106 BF93      		push r27
+ 272 0108 EF93      		push r30
+ 273 010a FF93      		push r31
+ 274               	/* prologue: Signal */
+ 275               	/* frame size = 0 */
+ 276               	.LM46:
+ 277               	/* #APP */
+ 278               	 ;  91 "timer/timer.c" 1
+ 279 010c F894      		cli
+ 280               	 ;  0 "" 2
+ 281               	/* #NOAPP */
+ 282               	.LBB8:
+ 283               	.LBB9:
+ 284               	.LM47:
+ 285 010e 80E8      		ldi r24,lo8(-128)
+ 286 0110 82BF      		out 82-32,r24
+ 287               	.LBE9:
+ 288               	.LBE8:
+ 289               	.LM48:
+ 290 0112 8091 0000 		lds r24,time_0
+ 291 0116 9091 0000 		lds r25,(time_0)+1
+ 292 011a A091 0000 		lds r26,(time_0)+2
+ 293 011e B091 0000 		lds r27,(time_0)+3
+ 294 0122 0196      		adiw r24,1
+ 295 0124 A11D      		adc r26,__zero_reg__
+ 296 0126 B11D      		adc r27,__zero_reg__
+ 297 0128 8093 0000 		sts time_0,r24
+ 298 012c 9093 0000 		sts (time_0)+1,r25
+ 299 0130 A093 0000 		sts (time_0)+2,r26
+ 300 0134 B093 0000 		sts (time_0)+3,r27
+ 301               	.LM49:
+ 302 0138 81E0      		ldi r24,lo8(1)
+ 303 013a 8093 0000 		sts timer0_flag,r24
+ 304               	.LM50:
+ 305 013e 80E0      		ldi r24,lo8(0)
+ 306 0140 0E94 0000 		call LED_switch
+ 307               	.LM51:
+ 308               	/* #APP */
+ 309               	 ;  99 "timer/timer.c" 1
+ 310 0144 7894      		sei
+ 311               	 ;  0 "" 2
+ 312               	/* epilogue start */
+ 313               	.LM52:
+ 314               	/* #NOAPP */
+ 315 0146 FF91      		pop r31
+ 316 0148 EF91      		pop r30
+ 317 014a BF91      		pop r27
+ 318 014c AF91      		pop r26
+ 319 014e 9F91      		pop r25
+ 320 0150 8F91      		pop r24
+ 321 0152 7F91      		pop r23
+ 322 0154 6F91      		pop r22
+ 323 0156 5F91      		pop r21
+ 324 0158 4F91      		pop r20
+ 325 015a 3F91      		pop r19
+ 326 015c 2F91      		pop r18
+ 327 015e 0F90      		pop r0
+ 328 0160 0FBE      		out __SREG__,r0
+ 329 0162 0F90      		pop r0
+ 330 0164 1F90      		pop __zero_reg__
+ 331 0166 1895      		reti
+ 332               	.LFE10:
+ 334               	.global	time_0
+ 335               	.global	time_0
+ 336               		.section .bss
+ 339               	time_0:
+ 340 0000 0000 0000 		.skip 4,0
+ 341               	.global	time_1
+ 342               	.global	time_1
+ 345               	time_1:
+ 346 0004 0000 0000 		.skip 4,0
+ 347               	.global	timer0_flag
+ 348               	.global	timer0_flag
+ 351               	timer0_flag:
+ 352 0008 00        		.skip 1,0
+ 353               	.global	timer1_flag
+ 354               	.global	timer1_flag
+ 357               	timer1_flag:
+ 358 0009 00        		.skip 1,0
+ 455               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer.c
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:2      *ABS*:0000003f __SREG__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:3      *ABS*:0000003e __SP_H__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:4      *ABS*:0000003d __SP_L__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:5      *ABS*:00000034 __CCP__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:18     .text:00000000 timer0_init
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:339    .bss:00000000 time_0
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:44     .text:0000001e timer0_start
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:59     .text:00000024 timer0_stop
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:73     .text:00000028 timer0_reset
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:88     .text:0000002e timer1_init
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:345    .bss:00000004 time_1
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:119    .text:00000052 timer1_start
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:136    .text:0000005a timer1_stop
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:152    .text:00000060 timer1_reset
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:170    .text:0000006a __vector_9
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:357    .bss:00000009 timer1_flag
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:254    .text:000000ea __vector_11
+C:\Users\CUI\AppData\Local\Temp/ccnXh1H0.s:351    .bss:00000008 timer0_flag
+
+UNDEFINED SYMBOLS
+LED_switch
+__do_clear_bss
