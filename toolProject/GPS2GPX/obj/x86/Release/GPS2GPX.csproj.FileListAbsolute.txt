@@ -1,0 +1,9 @@
+D:\VSProject\GPS2GPX\GPS2GPX\bin\Release\GPS2GPX.exe
+D:\VSProject\GPS2GPX\GPS2GPX\bin\Release\GPS2GPX.pdb
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\ResolveAssemblyReference.cache
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GPS2GPX.Form_main.resources
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GPS2GPX.Properties.Resources.resources
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GPS2GPX.exe
+D:\VSProject\GPS2GPX\GPS2GPX\obj\x86\Release\GPS2GPX.pdb
